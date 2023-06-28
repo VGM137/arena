@@ -1,0 +1,289 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    *::-webkit-scrollbar-track {
+      background: #5c5c5c36;
+      border-radius: 10px
+    }
+    *::-webkit-scrollbar-thumb {
+      background: #575757;
+      border-radius: 10px
+    }
+    *::-webkit-scrollbar-thumb:hover {
+      background: #4c4c4c;
+    }
+    *{
+      box-sizing: border-box;
+    }
+    @font-face {
+      font-family: 'DrukWideBold';
+      src: url(../RECURSOS\ GRÁFICOS/Druk\ Wide\ Bold.ttf);
+    }
+    h1 {
+      font-size: 1rem;
+    }
+    span{
+      letter-spacing: 0.025rem;
+    }
+    textarea {
+      resize: none!important;
+    }
+    .user-background__image{
+      background-image: url(../RECURSOS\ GRÁFICOS/INTERFAZ\ PERFIL\ FAN\ VERTICAL.jpg)
+    }
+    @media screen and (min-width: 640px) {
+      .user-background__image{
+        background-image: url(../RECURSOS\ GRÁFICOS/INTERFAZ\ PERFIL\ FAN.png)
+      }
+    }
+    ul {
+      margin: 0;
+    }
+    ul.dashed {
+      list-style-type: none;
+    }
+    ul.dashed > li {
+      text-indent: -5px;
+    }
+    ul.dashed > li:before {
+      content: "-";
+      text-indent: -5px;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'yellow': '#c9950d',
+            'letters': '#edd6a1',
+            'gray': '#000000',
+            'transLetters': '#edd6a166',
+            'transBlack': '#00000040',
+            'bgTransBlack': '#00000025'
+          },
+          spacing: {
+            '95': '95%',
+            '90': '90%',
+            '80': '80%',
+            '70': '70%',
+            '60': '60%',
+            '50': '50%',
+            '55': '55%',
+            '40': '40%',
+            '45': '45%',
+            '30': '30%',
+            '35': '35%',
+            '20': '20%',
+            '15': '15%',
+            '10': '10%'
+          },
+          brightness: {
+            '70': '.70',
+            '30': '.30',
+            '25': '.25',
+          },
+          fontSize:{
+            xxs: '0.5rem',
+            xs: '0.7rem',
+            sm: '0.85rem',
+            s: '0.9rem',
+            base: '1rem'
+          }
+        },
+        fontFamily: {
+          'druk': ['DrukWideBold']
+        }
+      }
+    }
+  </script>
+  <title>Document</title>
+</head>
+<body>
+  <main>
+    <div class="user-background__image bg-cover h-screen overflow-hidden">
+      <section class="h-15 lg:h-10">
+        <header class="flex align-center justify-between h-full p-3 bg-transBlack border-b border-transLetters">
+          <div class="flex align-center h-70 lg:hidden">
+            <img class="h-[20px] m-auto" src="../RECURSOS GRÁFICOS/barras.png" alt="Menu desplegable" height="20px" width="20px">
+          </div>
+          <div class="flex w-50 h-70 justify-end lg:h-full lg:w-20 lg:justify-start">
+            <img class="w-60 h-min my-auto sm:w-auto sm:h-full" src="../RECURSOS GRÁFICOS/LOGO_PERFIL.png" loading="lazy" alt="logo principal">
+          </div>
+          <nav class="hidden lg:flex lg:w-60 lg:items-center lg:justify-center">
+            <ul class="flex">
+              <li class="font-druk text-xs text-letters ml-3">EN VIVO</li>
+              <li class="font-druk text-xs text-letters ml-3">PROGRAMAS</li>
+              <li class="font-druk text-xs text-letters ml-3">GALERÍA FAN</li>
+              <li class="font-druk text-xs text-letters ml-3">SCOUTING</li>
+            </ul>
+          </nav>
+        </header>
+      </section>
+      
+      <div class="lg:flex lg:flex-row-reverse lg:h-90 lg:m-3">
+        <section class="flex flex-col justify-center border-b border-transLetters lg:w-30 lg:border-l lg:border-b-0 lg:justify-center">
+          <div class="lg:h-35 flex flex-col justify-center">
+            <div class="relative w-full h-[120px] lg:w-auto lg:h-60 lg:mx-auto">
+              <div class="h-[130%] max-sm:absolute max-sm:bottom-5 max-sm:translate-x-50 max-sm:right-50 border-4 border-letters rounded-2xl overflow-hidden m-auto lg:relative lg:h-full lg:w-fit" >
+                <img class="h-full w-auto" src="../RECURSOS GRÁFICOS/Recurso 6.jpg" alt="Foto de perfil">
+              </div>
+            </div>
+            <div class="flex flex-col justify-center h-40 lg:h-auto">
+              <h1 class="w-max px-2 m-auto tracking-widest text-center text-white font-druk border-b-2 border-white lg:border-0">Andrés De Anda</h1>
+              <span class="w-90 m-auto tracking-widest text-center text-letters text-xs font-druk ">14 años / Mexicano / Estudiante</span>
+              <button class="w-max px-3 py-1 mx-auto my-[15px] font-druk text-xs text-druk text-white bg-transBlack border rounded-3xl border-transLetters">Azañas</button>
+            </div>
+          </div>
+
+          <section class="flex flex-col border-t border-transLetters bg-transBlack lg:h-55 lg:border-0 lg:bg-transparent">
+            <h2 class="font-druk text-white text-xs m-3 lg:text-center">DESCRIPCIÓN DREAM FAN:</h2>
+            <div class="w-95 m-auto mb-3 min-h-[100px] max-h-[150px] text-white lg:w-70 lg:h-full lg:p-5 lg:border border-transLetters lg:bg-transBlack lg:rounded-3xl lg:max-h-[400px]">
+              <div class="min-h-[100px] max-h-[150px] w-full lg:p-2 lg:max-h-[400px]">
+                <textarea class="min-h-[100px] max-h-[150px] w-full outline-0 bg-transparent lg:max-h-90 lg:h-full lg:max-h-[400px]">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</textarea>
+              </div>
+            </div>
+          </section>
+        </section>
+  
+        <div class="lg:w-70 lg:flex flex-col">
+          <section class="relative flex lg:h-45 mt-10 border-y border-transLetters bg-transBlack lg:border-0 lg:m-0 lg:bg-transparent">
+            <div class="hidden m-auto my-3 h-auto text-white lg:block lg:p-5 lg:border border-transLetters bg-transBlack rounded-3xl lg:max-h-[400px]"">
+              <div class="flex flex-col">
+                <h2 class="font-druk tracking-widest text-white text-xs">FORTALEZAS:</h2>
+                <span class="text-xxs tracking-widest font-druk text-letters h-min">Máx 150 caracteres</span>
+              </div>
+              <textarea class="h-90 w-full outline-0 bg-transparent mt-2 max-h-90">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500</textarea>
+            </div>
+            
+            <div class="relative flex flex-col w-full lg:ml-3 lg:items-center lg:w-80">
+              <h2 class="sticky w-min m-3 font-druk text-white text-xs text-center lg:w-full">REPRESENTANTES:</h2>
+
+              <div class="w-full overflow-y-hidden">
+                <div class="flex w-max justify-center lg:w-full">
+  
+                  <div class="flex py-3 px-9 w-screen justify-center align-center lg:flex-col lg:px-0 lg:w-30">
+                    <div class="h-[120px] border-4 m-auto border-letters rounded-2xl overflow-hidden lg:w-60 lg:h-auto">
+                      <img class="h-full w-auto lg:w-full lg:h-auto" src="../RECURSOS GRÁFICOS/Recurso 5.jpg" alt="Foto de perfil">
+                    </div>
+                    <div class="w-70 mx-auto lg:w-90">
+                      <h3 class="font-druk text-white text-xs m-2 lg:text-center">Antonio de Anda</h3>
+                      <ul class="dashed w-90 pl-3 m-2 text-letters font-druk tracking-widest text-sm">
+                        <li class="mb-1 text-xs lg:mb-0">42 Años</li>
+                        <li class="mb-1 text-xs lg:mb-0">Mexicano</li>
+                        <li class="mb-1 text-xs lg:mb-0">Padre</li>
+                        <li class="mb-1 text-xs lg:mb-0">477 935 9803</li>
+                      </ul>
+                    </div>
+                  </div>
+    
+                  <div class="flex py-3 px-9 w-screen justify-center align-center lg:flex-col lg:px-0 lg:w-30">
+                    <div class="h-[120px] border-4 m-auto border-letters rounded-2xl overflow-hidden lg:w-60 lg:h-auto">
+                      <img class="h-full w-auto lg:w-full lg:h-auto" src="../RECURSOS GRÁFICOS/Recurso 4.jpg" alt="Foto de perfil">
+                    </div>
+                    <div class="w-70 mx-auto lg:w-90">
+                      <h3 class="font-druk text-white text-xs m-2 lg:text-center">Guillermo Salinas</h3>
+                      <ul class="dashed w-90 pl-3 m-2 text-letters font-druk tracking-widest text-sm">
+                        <li class="mb-1 text-xs lg:mb-0">47 Años</li>
+                        <li class="mb-1 text-xs lg:mb-0">Mexicano</li>
+                        <li class="mb-1 text-xs lg:mb-0">Representante</li>
+                        <li class="mb-1 text-xs lg:mb-0">477 935 9803</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="absolute translate-y-50 top-50 right-3 lg:hidden">
+              <img class="h-[20px] w-auto" src="../RECURSOS GRÁFICOS/flecha d.png" alt="">
+            </div>
+            <div class="absolute translate-y-50 top-50 left-3 lg:hidden">
+              <img class="h-[20px] w-auto" src="../RECURSOS GRÁFICOS/flecha i.png" alt="">
+            </div>
+          </section>
+
+          <section class="hidden lg:block h-55">
+            <h2 class="sticky w-min m-3 font-druk text-white text-xs text-center lg:w-full">AZAÑAS:</h2>
+            <div class="max-h-55 grid grid-cols-3">
+              <div class="relative w-90 mb-3 rounded-3xl overflow-hidden ">
+                <img class="w-full h-auto" src="../RECURSOS GRÁFICOS/Recurso 15.jpg" alt="Preview de azaña">
+                <div class="absolute bottom-0 flex flex-col w-full h-full items-start justify-end bg-gradient-to-t from-[#000000d9] ">
+                  <span class="text-xs ml-3 text-white font-druk">GDL desde media cancha</span>
+                  <ul class="dashed w-90 ml-3 px-3 pb-3 text-letters font-druk tracking-widest text-s">
+                    <li class="mb-1 text-xs">13 años</li>
+                    <li class="mb-1 text-xs">Torneo estatal de GDL</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="relative w-90 mb-3 rounded-3xl overflow-hidden ">
+                <img class="w-full h-auto" src="../RECURSOS GRÁFICOS/Recurso 19.jpg" alt="Preview de azaña">
+                <div class="absolute bottom-0 flex flex-col w-full h-full items-start justify-end bg-gradient-to-t from-[#000000d9] ">
+                  <span class="text-xs ml-3 text-white font-druk">GDL desde media cancha</span>
+                  <ul class="dashed w-90 ml-3 px-3 pb-3 text-letters font-druk tracking-widest text-s">
+                    <li class="mb-1 text-xs">13 años</li>
+                    <li class="mb-1 text-xs">Torneo estatal de GDL</li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="relative w-90 mb-3 rounded-3xl overflow-hidden ">
+                <img class="w-full h-auto" src="../RECURSOS GRÁFICOS/Recurso 13.jpg" alt="Preview de azaña">
+                <div class="absolute bottom-0 flex flex-col w-full h-full items-start justify-end bg-gradient-to-t from-[#000000d9] ">
+                  <span class="text-xs ml-3 text-white font-druk">GDL desde media cancha</span>
+                  <ul class="dashed w-90 ml-3 px-3 pb-3 text-letters font-druk tracking-widest text-s">
+                    <li class="mb-1 text-xs">13 años</li>
+                    <li class="mb-1 text-xs">Torneo estatal de GDL</li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="relative w-90 mb-3 rounded-3xl overflow-hidden ">
+                <img class="w-full h-auto" src="../RECURSOS GRÁFICOS/Recurso 33.jpg" alt="Preview de azaña">
+                <div class="absolute bottom-0 flex flex-col w-full h-full items-start justify-end bg-gradient-to-t from-[#000000d9] ">
+                  <span class="text-xs ml-3 text-white font-druk">GDL desde media cancha</span>
+                  <ul class="dashed w-90 ml-3 px-3 pb-3 text-letters font-druk tracking-widest text-s">
+                    <li class="mb-1 text-xs">13 años</li>
+                    <li class="mb-1 text-xs">Torneo estatal de GDL</li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="relative w-90 mb-3 rounded-3xl overflow-hidden ">
+                <img class="w-full h-auto" src="../RECURSOS GRÁFICOS/Recurso 20.jpg" alt="Preview de azaña">
+                <div class="absolute bottom-0 flex flex-col w-full h-full items-start justify-end bg-gradient-to-t from-[#000000d9] ">
+                  <span class="text-xs ml-3 text-white font-druk">GDL desde media cancha</span>
+                  <ul class="dashed w-90 ml-3 px-3 pb-3 text-letters font-druk tracking-widest text-s">
+                    <li class="mb-1 text-xs">13 años</li>
+                    <li class="mb-1 text-xs">Torneo estatal de GDL</li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="relative w-90 mb-3 rounded-3xl overflow-hidden ">
+                <img class="w-full h-auto" src="../RECURSOS GRÁFICOS/Recurso 36.jpg" alt="Preview de azaña">
+                <div class="absolute bottom-0 flex flex-col w-full h-full items-start justify-end bg-gradient-to-t from-[#000000d9] ">
+                  <span class="text-xs ml-3 text-white font-druk">GDL desde media cancha</span>
+                  <ul class="dashed w-90 ml-3 px-3 pb-3 text-letters font-druk tracking-widest text-s">
+                    <li class="mb-1 text-xs">13 años</li>
+                    <li class="mb-1 text-xs">Torneo estatal de GDL</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+</body>
+</html>
