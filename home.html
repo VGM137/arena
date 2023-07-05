@@ -3,61 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* width */
-    *::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
-    }
-
-    /* Track */
-    *::-webkit-scrollbar-track {
-      background: #5c5c5c36;
-      border-radius: 10px
-    }
-
-    /* Handle */
-    *::-webkit-scrollbar-thumb {
-      background: #575757;
-      border-radius: 10px
-    }
-
-    /* Handle on hover */
-    *::-webkit-scrollbar-thumb:hover {
-      background: #4c4c4c;
-    }
     @font-face {
       font-family: 'DrukWideBold';
       src: url(../RECURSOS\ GRÁFICOS/Druk\ Wide\ Bold.ttf);
     }
-    h1 {
-      font-size: 1rem;
-    }
-    span{
-      letter-spacing: 0.025rem;
-    }
-
-    .home-background__image{
-      background-image: url(../RECURSOS\ GRÁFICOS/INTERFAZ\ PRINCIPAL\ VERTICAL.jpg)
-    }
-    @media screen and (min-width: 640px) {
-      .home-background__image{
-        background-image: url(../RECURSOS\ GRÁFICOS/INTERFAZ\ PRINCIPAL.png)
-      }
-    }
-    ul {
-      margin: 0;
-    }
-    ul.dashed {
-      list-style-type: none;
-    }
-    ul.dashed > li {
-      text-indent: -5px;
-    }
-    ul.dashed > li:before {
-      content: "-";
-      text-indent: -5px;
+    @font-face {
+      font-family: 'Avenir';
+      src: url(../RECURSOS\ GRÁFICOS/AvenirRegular.otf);
     }
   </style>
   <script>
@@ -66,11 +21,14 @@
         extend: {
           colors: {
             'yellow': '#c9950d',
-            'letters': '#edd6a1',
+            'letters': '#ead3a4',
             'gray': '#000000',
             'transLetters': '#edd6a166',
             'transBlack': '#00000040',
-            'bgTransBlack': '#00000025'
+            'bgTransBlack': '#00000025',
+            'arenaBlue': '#1992b8',
+            'arenaOrange': '#f0492b',
+            'arenaGray': '#7c756b'
           },
           spacing: {
             '95': '95%',
@@ -82,11 +40,15 @@
             '55': '55%',
             '40': '40%',
             '45': '45%',
-            '30': '30%',
             '35': '35%',
+            '30': '30%',
+            '25': '25%',
             '20': '20%',
             '15': '15%',
             '10': '10%'
+          },
+          minWidth: {
+            '50': '50%'
           },
           brightness: {
             '70': '.70',
@@ -108,18 +70,18 @@
     }
   </script>
 
-  <title>Document</title>
+  <title>Home</title>
 </head>
 <body>
   <main>
     <div class="home-background__image bg-cover h-screen overflow-hidden" >
       <section class="h-20 lg:h-10">
         <header class="lg:flex align-center justify-between h-full p-3 lg:bg-transBlack lg:border-b border-transLetters">
-          <div class="flex w-80 h-80 m-auto items-center justify-center lg:h-full lg:w-full lg:justify-start">
-            <img class="h-min my-auto sm:w-auto sm:h-full" src="../RECURSOS GRÁFICOS/ARENA LOGO.png" loading="lazy" alt="logo principal">
+          <div class="flex w-80 h-80 m-auto items-center justify-center lg:h-full lg:w-20 lg:justify-start m-0">
+            <img class="h-min my-auto sm:w-auto sm:h-full" src="https://arenafan.tv/app/assets/static/ARENA LOGO.png" loading="lazy" alt="logo principal">
           </div>
           <hr class="w-70 border-white mx-auto sm:hidden">
-          <nav class="hidden lg:flex lg:w-60 lg:items-center lg:justify-center">
+          <nav class="hidden lg:flex lg:w-80 lg:items-center lg:justify-start">
             <ul class="flex">
               <li class="font-druk text-xs text-letters ml-3">EN VIVO</li>
               <li class="font-druk text-xs text-letters ml-3">PROGRAMAS</li>
@@ -136,7 +98,7 @@
           <div class="xl:border-r border-white h-90">
             <div class="relative flex flex-col xl:grid xl:grid-cols-[20%_80%] bg-yellow xl:bg-transparent rounded-3xl align-center justify-center m-auto h-90 w-4/5 xl:w-95 xl:h-10">
               <div class="flex h-4/5 xl:h-full">
-                <img class="m-auto w-3/5" src="../RECURSOS GRÁFICOS/vivo.png">
+                <img class="m-auto w-3/5" src="https://arenafan.tv/app/assets/static/vivo.png">
               </div>
               <hr class="w-3/4 border-white mx-auto xl:absolute xl:translate-x-2/4 bottom-0 right-[50%]">
               <h1 class="text-xs tracking-widest font-druk text-center text-white  w-11/12 leading-4 m-auto xl:text-base">TRANSMISIÓN EN VIVO</h1>
@@ -145,54 +107,54 @@
             <div class="hidden md:flex flex-col h-90 ml-[10px] m-auto mt-2.5 overflow-y-auto">
               <div class="flex items-center mt-[10px]">
                 <div class="w-2/5">
-                  <img src="../RECURSOS GRÁFICOS/Recurso 37.jpg" alt="Miniatura de transmisión">
+                  <img src="https://arenafan.tv/app/assets/static/Recurso 37.jpg" alt="Miniatura de transmisión">
                 </div>
                 <span class="font-druk text-letters w-3/5 mx-[10px] text-xs">Alanta vs Holanda</span>
               </div>
               
               <div class="flex items-center mt-[10px]">
                 <div class="w-2/5">
-                  <img src="../RECURSOS GRÁFICOS/Recurso 38.jpg" alt="Miniatura de transmisión">
+                  <img src="https://arenafan.tv/app/assets/static/Recurso 38.jpg" alt="Miniatura de transmisión">
                 </div>
                 <span class="font-druk text-letters w-3/5 mx-[10px] text-xs">Chivas vs Tigres</span>
               </div>
               
               <div class="flex items-center mt-[10px]">
                 <div class="w-2/5">
-                  <img src="../RECURSOS GRÁFICOS/Recurso 33.jpg" alt="Miniatura de transmisión">
+                  <img src="https://arenafan.tv/app/assets/static/Recurso 33.jpg" alt="Miniatura de transmisión">
                 </div>
                 <span class="font-druk text-letters w-3/5 mx-[10px] text-xs">Canelo vs Mayweather</span>
               </div>
               
               <div class="flex items-center mt-[10px]">
                 <div class="w-2/5">
-                  <img src="../RECURSOS GRÁFICOS/Recurso 34.jpg" alt="Miniatura de transmisión">
+                  <img src="https://arenafan.tv/app/assets/static/Recurso 34.jpg" alt="Miniatura de transmisión">
                 </div>
                 <span class="font-druk text-letters w-3/5 mx-[10px] text-xs">Dodgers vs Giants</span>
               </div>
               
               <div class="flex items-center mt-[10px]">
                 <div class="w-2/5">
-                  <img src="../RECURSOS GRÁFICOS/Recurso 36.jpg" alt="Miniatura de transmisión">
+                  <img src="https://arenafan.tv/app/assets/static/Recurso 36.jpg" alt="Miniatura de transmisión">
                 </div>
                 <span class="font-druk text-letters w-3/5 mx-[10px] text-xs">Buccaneers vs Patriots</span>
               </div>
               
               <div class="flex items-center mt-[10px]">
                 <div class="w-2/5">
-                  <img src="../RECURSOS GRÁFICOS/Recurso 35.jpg" alt="Miniatura de transmisión">
+                  <img src="https://arenafan.tv/app/assets/static/Recurso 35.jpg" alt="Miniatura de transmisión">
                 </div>
                 <span class="font-druk text-letters w-3/5 mx-[10px] text-xs">Paises Bajos vs Ecuador</span>
               </div>
               <div class="flex items-center mt-[10px]">
                 <div class="w-2/5">
-                  <img src="../RECURSOS GRÁFICOS/Recurso 14.jpg" alt="Miniatura de transmisión">
+                  <img src="https://arenafan.tv/app/assets/static/Recurso 14.jpg" alt="Miniatura de transmisión">
                 </div>
                 <span class="font-druk text-letters w-3/5 mx-[10px] text-xs">GreenBay vs Saints</span>
               </div>
               <div class="flex items-center mt-[10px]">
                 <div class="w-2/5">
-                  <img src="../RECURSOS GRÁFICOS/Recurso 17.jpg" alt="Miniatura de transmisión">
+                  <img src="https://arenafan.tv/app/assets/static/Recurso 17.jpg" alt="Miniatura de transmisión">
                 </div>
                 <span class="font-druk text-letters w-3/5 mx-[10px] text-xs">Paises Bajos vs Ecuador</span>
               </div>
@@ -202,7 +164,7 @@
           <div class="xl:border-r border-white h-90">
             <div class="relative flex flex-col xl:grid xl:grid-cols-[20%_80%] bg-yellow xl:bg-transparent rounded-3xl align-center justify-center m-auto h-90 w-4/5 xl:w-95 xl:h-10">
               <div class="flex h-4/5 xl:h-full">
-                <img class="m-auto w-3/5" src="../RECURSOS GRÁFICOS/tv.png">
+                <img class="m-auto w-3/5" src="https://arenafan.tv/app/assets/static/tv.png">
               </div>
               <hr class="w-3/4 border-white mx-auto xl:absolute xl:translate-x-2/4 bottom-0 right-[50%]">
               <h1 class="text-xs tracking-widest font-druk text-center text-white  w-11/12 leading-4 m-auto xl:text-base">PROGRAMAS</h1>
@@ -213,42 +175,42 @@
 
                 <div class="flex flex-col items-center w-90 m-auto mb-6">
                   <div>
-                    <img src="../RECURSOS GRÁFICOS/Recurso 23.jpg" alt="Miniatura de programa">
+                    <img src="https://arenafan.tv/app/assets/static/Recurso 23.jpg" alt="Miniatura de programa">
                   </div>
                   <span class="text-xxs h-7 overflow-hidden tracking-widest font-druk text-center text-letters mt-1">LA ZONA</span>
                 </div>
 
                 <div class="flex flex-col items-center w-90 m-auto mb-6">
                   <div>
-                    <img src="../RECURSOS GRÁFICOS/Recurso 24.jpg" alt="Miniatura de programa">
+                    <img src="https://arenafan.tv/app/assets/static/Recurso 24.jpg" alt="Miniatura de programa">
                   </div>
                   <span class="text-xxs h-7 overflow-hidden tracking-widest font-druk text-center text-letters mt-1">FÚTBOL PICANTE</span>
                 </div>
 
                 <div class="flex flex-col items-center w-90 m-auto mb-6">
                   <div>
-                    <img src="../RECURSOS GRÁFICOS/Recurso 22.jpg" alt="Miniatura de programa">
+                    <img src="https://arenafan.tv/app/assets/static/Recurso 22.jpg" alt="Miniatura de programa">
                   </div>
                   <span class="text-xxs h-7 overflow-hidden tracking-widest font-druk text-center text-letters mt-1">TOUCHDOWN TITANS</span>
                 </div>
 
                 <div class="flex flex-col items-center w-90 m-auto mb-6">
                   <div>
-                    <img src="../RECURSOS GRÁFICOS/Recurso 21.jpg" alt="Miniatura de programa">
+                    <img src="https://arenafan.tv/app/assets/static/Recurso 21.jpg" alt="Miniatura de programa">
                   </div>
                   <span class="text-xxs h-7 overflow-hidden tracking-widest font-druk text-center text-letters mt-1">TODO DEPORTES</span>
                 </div>
 
                 <div class="flex flex-col items-center w-90 m-auto mb-6">
                   <div>
-                    <img src="../RECURSOS GRÁFICOS/Recurso 20.jpg" alt="Miniatura de programa">
+                    <img src="https://arenafan.tv/app/assets/static/Recurso 20.jpg" alt="Miniatura de programa">
                   </div>
                   <span class="text-xxs h-7 overflow-hidden tracking-widest font-druk text-center text-letters mt-1">WARRIOR WAYS</span>
                 </div>
 
                 <div class="flex flex-col items-center w-90 m-auto mb-6">
                   <div>
-                    <img src="../RECURSOS GRÁFICOS/Recurso 19.jpg" alt="Miniatura de programa">
+                    <img src="https://arenafan.tv/app/assets/static/Recurso 19.jpg" alt="Miniatura de programa">
                   </div>
                   <span class="text-xxs h-7 overflow-hidden tracking-widest font-druk text-center text-letters mt-1">ENCIENDE LA MECHA</span>
                 </div>
@@ -259,42 +221,42 @@
               <div class="grid grid-cols-3 mt-2.5">
                 <div class="flex flex-col items-center w-90 m-auto mb-6">
                   <div class="h-90">
-                    <img src="../RECURSOS GRÁFICOS/Recurso 18.jpg" alt="Miniatura de programa">
+                    <img src="https://arenafan.tv/app/assets/static/Recurso 18.jpg" alt="Miniatura de programa">
                   </div>
                   <span class="text-xxs h-7 overflow-hidden tracking-widest font-druk text-center text-letters mt-1">LIGA MX</span>
                 </div>
 
                 <div class="flex flex-col items-center w-90 m-auto mb-6">
                   <div>
-                    <img src="../RECURSOS GRÁFICOS/Recurso 14.jpg" alt="Miniatura de programa">
+                    <img src="https://arenafan.tv/app/assets/static/Recurso 14.jpg" alt="Miniatura de programa">
                   </div>
                   <span class="text-xxs h-7 overflow-hidden tracking-widest font-druk text-center text-letters mt-1">PACKERS VS SAINTS</span>
                 </div>
 
                 <div class="flex flex-col items-center w-90 m-auto mb-6">
                   <div>
-                    <img src="../RECURSOS GRÁFICOS/Recurso 16.jpg" alt="Miniatura de programa">
+                    <img src="https://arenafan.tv/app/assets/static/Recurso 16.jpg" alt="Miniatura de programa">
                   </div>
                   <span class="text-xxs h-7 overflow-hidden tracking-widest font-druk text-center text-letters mt-1">METS VS YANKEES</span>
                 </div>
 
                 <div class="flex flex-col items-center w-90 m-auto mb-6">
                   <div>
-                    <img src="../RECURSOS GRÁFICOS/Recurso 23.jpg" alt="Miniatura de programa">
+                    <img src="https://arenafan.tv/app/assets/static/Recurso 23.jpg" alt="Miniatura de programa">
                   </div>
                   <span class="text-xxs h-7 overflow-hidden tracking-widest font-druk text-center text-letters mt-1">TIROS SIMULTANEOS</span>
                 </div>
 
                 <div class="flex flex-col items-center w-90 m-auto mb-6">
                   <div>
-                    <img src="../RECURSOS GRÁFICOS/Recurso 15.jpg" alt="Miniatura de programa">
+                    <img src="https://arenafan.tv/app/assets/static/Recurso 15.jpg" alt="Miniatura de programa">
                   </div>
                   <span class="text-xxs h-7 overflow-hidden tracking-widest font-druk text-center text-letters mt-1">TORNEO ATP</span>
                 </div>
 
                 <div class="flex flex-col items-center w-90 m-auto mb-6">
                   <div>
-                    <img src="../RECURSOS GRÁFICOS/Recurso 17.jpg" alt="Miniatura de programa">
+                    <img src="https://arenafan.tv/app/assets/static/Recurso 17.jpg" alt="Miniatura de programa">
                   </div>
                   <span class="text-xxs h-7 overflow-hidden tracking-widest font-druk text-center text-letters mt-1">METS VS BUCKS</span>
                 </div>
@@ -305,7 +267,7 @@
           <div class="xl:border-r border-white h-90">
             <div class="relative flex flex-col xl:grid xl:grid-cols-[20%_80%] bg-yellow xl:bg-transparent rounded-3xl align-center justify-center m-auto h-90 w-4/5 xl:w-95 xl:h-10">
               <div class="flex h-4/5 xl:h-full">
-                <img class="m-auto w-3/5" src="../RECURSOS GRÁFICOS/galeria.png">
+                <img class="m-auto w-3/5" src="https://arenafan.tv/app/assets/static/galeria.png">
               </div>
               <hr class="w-3/4 border-white mx-auto xl:absolute xl:translate-x-2/4 bottom-0 right-[50%]">
               <h1 class="text-xs tracking-widest font-druk text-center text-white  w-11/12 leading-4 m-auto xl:text-base">GALERÍA FAN</h1>
@@ -341,7 +303,7 @@
           <div class="h-90">
             <div class="relative flex flex-col xl:grid xl:grid-cols-[20%_80%] bg-yellow xl:bg-transparent rounded-3xl align-center justify-center m-auto h-90 w-4/5 xl:w-95 xl:h-10">
               <div class="flex h-4/5 xl:h-full">
-                <img class="m-auto w-3/5" src="../RECURSOS GRÁFICOS/camara.png">
+                <img class="m-auto w-3/5" src="https://arenafan.tv/app/assets/static/camara.png">
               </div>
               <hr class="w-3/4 border-white mx-auto xl:absolute xl:translate-x-2/4 bottom-0 right-[50%]">
               <h1 class="text-xs tracking-widest font-druk text-center text-white  w-11/12 leading-4 m-auto xl:text-base">VISOR DEPORTIVO SCOUTING</h1>
