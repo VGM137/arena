@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./all.css">
+  <link rel="stylesheet" href="./fontawesome.css">
+  <title>Player</title>
+  <script src="all.js"></script>
+  <style>
+    @font-face {
+      font-family: 'DrukWideBold';
+      src: url(../RECURSOS\ GRÁFICOS/Druk\ Wide\ Bold.ttf);
+    }
+    @font-face {
+      font-family: 'Avenir';
+      src: url(../RECURSOS\ GRÁFICOS/AvenirRegular.otf);
+    }
+    @font-face {
+      font-family: "HeydingsControlsRegular";
+      src: url("fonts/heydings_controls-webfont.eot");
+      src:
+        url("fonts/heydings_controls-webfont.eot?#iefix") format("embedded-opentype"),
+        url("fonts/heydings_controls-webfont.woff") format("woff"),
+        url("fonts/heydings_controls-webfont.ttf") format("truetype");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    *{
+      box-sizing: border-box;
+    }
+    body{
+      margin: 0;
+      padding: 0;
+    }
+    main{
+      position: relative;
+    }
+    button:before {
+      font-family: HeydingsControlsRegular;
+      font-size: 20px;
+      position: relative;
+      content: attr(data-icon);
+      color: #aaa;
+      text-shadow: 1px 1px 0px black;
+    }
+
+
+    .full-screen-showing{
+      height: 90vh;
+      overflow: hidden;
+    }
+    .full-screen-full{
+      height: 100vh;
+      overflow: hidden;
+    }
+    .full-screen__player {
+      height: 100%;
+      position: relative;
+    }
+    .full-screen__video{
+      width: auto;
+      height: 100%;
+    }
+
+    .other-views__container {
+      position: absolute;
+      bottom: 10%;
+      height: 40%;
+      width: 100%;
+      background: hsl(0deg 0% 0% / 65%);
+      border-radius: 20px 20px 0 0;
+      color: white;
+      padding: 15px;
+      z-index: 10;
+    }
+    .other-views__container h2 {
+      height: 10%;
+      margin: 0 0 8px;
+      text-align: center;
+    }
+    .other-views__content {
+      position: relative;
+      height: 90%;
+      box-shadow: 0px -5px 20px 0px rgb(255 255 255 / 30%);
+      overflow-y: auto;
+      border-radius: 10px;
+    }
+    .other-views__carrousel {
+      height: 100%;
+      display: flex;
+      width: fit-content;
+    }
+    .other-view__item {
+      position: relative;
+      height: 100%;
+      width: max-content;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .other-view__item:not(:last-child){
+      margin: 0 10px 0 0;
+    }
+    .other-view__item--img{
+      height: 100%;
+      width: auto;
+    }
+    .other-view__item--img img{
+      height: 100%;
+      width: auto;
+    }
+    .other-view__item--desc{
+      display: flex;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      color: white;
+      flex-direction: column;
+      padding: 10px;
+      background: rgb(0 0 0 / 50%);
+    }
+
+    .options-bar{
+      height: 10vh;
+      background-color: black;
+      display: flex;
+      justify-content: space-around;
+    }
+    .options-bar button {
+      background-color: transparent;
+      border: none;
+      color: white;
+      height: 90%;
+      margin: 10px;
+    }
+
+    .controls {
+      visibility: hidden;
+      width: 400px;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      margin-left: -200px;
+      background-color: rgb(0 0 0 / 50%);
+      box-shadow: 3px 3px 5px black;
+      transition: 1s all;
+      display: flex;
+      height: 10%;
+      align-items: center;
+    }
+    .controls button {
+      height: max-content;
+      margin: 10px;
+      color: white;
+      background: transparent;
+      border: none;
+      width: max-content;
+    }
+    .timer {
+      line-height: 38px;
+      font-size: 10px;
+      font-family: monospace;
+      text-shadow: 1px 1px 0px black;
+      color: white;
+      flex: 5;
+      position: relative;
+    }
+    .timer div {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.2);
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 38px;
+      z-index: 2;
+    }
+    .timer span {
+      position: absolute;
+      z-index: 3;
+      left: 19px;
+    }
+
+
+    .player:hover .controls,
+    .player:focus-within .controls {
+      opacity: 1;
+    }
+
+    .display-none{
+      display: none;
+    }
+    .show-player__options {
+      height: 10%;
+      visibility: hidden;
+      transition: all, 1000, ease-in-out;
+    }
+    .show-options ~ .full-screen-showing{
+      height: 100vh;
+      transition: all, 1000, ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section id="playerContainer" class="full-screen-showing">
+      <div class="full-screen__player">
+        <video class="full-screen__video"  muted controls>
+          <source src="./videos/building.mp4" type="video/mp4">
+        <!-- Your browser does not support the video tag -->
+        </video>
+        <div id="controls" class="controls">
+          <button class="play"  aria-label="play pause toggle">
+            <i class="fa-solid fa-play-pause"></i>
+          </button>
+          <button class="stop" aria-label="stop">
+            <i class="fa-solid fa-stop"></i>
+          </button>
+          <div class="timer">
+            <div></div>
+            <span aria-label="timer">00:00</span>
+          </div>
+          <button class="rwd"  aria-label="rewind">
+            <i class="fa-solid fa-backward"></i>
+          </button>
+          <button class="fwd"  aria-label="fast forward">
+            <i class="fa-solid fa-forward"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="other-views__container display-none" >
+      <h2>Otras vistas</h2>
+      <div class="other-views__content">
+        <div class="other-views__carrousel">
+          <div class="other-view__item" >
+            <div class="other-view__item--img">
+              <img class="other-view__image" src="./images/geisha.jpg" alt="" data-url="./videos/geisha.mp4">
+            </div>
+            <div class="other-view__item--desc">
+              <span>Titulo</span>
+              <span>Descipción</span>
+              <span>Live</span>
+            </div>
+          </div>
+          <div class="other-view__item">
+            <div class="other-view__item--img">
+              <img class="other-view__image" src="./images/cat.jpg" alt="" data-url="./videos/cat.mp4">
+            </div>
+            <div class="other-view__item--desc">
+              <span>Titulo</span>
+              <span>Descipción</span>
+              <span>Live</span>
+            </div>
+          </div>
+          <div class="other-view__item">
+            <div class="other-view__item--img">
+              <img class="other-view__image" src="./images/mountains.jpg" alt="" data-url="./videos/mountains.mp4">
+            </div>
+            <div class="other-view__item--desc">
+              <span>Titulo</span>
+              <span>Descipción</span>
+              <span>Live</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="options-bar" data-is="showing">
+      <button id="otherView" class="button">
+        <i class="fa-solid fa-gallery-thumbnails"></i>
+      </button>
+      <button id="otherView" class="button">
+        <i class="fa-solid fa-notes-medical"></i>
+      </button>
+    </section>
+  </main>
+
+
+  <script src="./player.js"></script>
+</body>
+</html>

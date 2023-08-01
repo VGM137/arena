@@ -1,0 +1,93 @@
+@font-face {
+  font-family: 'DrukWideBold';
+  src: url(https://arenafan.tv/app/assets/static/Druk\ Wide\ Bold.ttf);
+}
+@font-face {
+  font-family: 'Avenir';
+  src: url(https://arenafan.tv/app/assets/static/AvenirRegular.otf);
+}
+*{
+  box-sizing: border-box;
+}
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+*::-webkit-scrollbar-track {
+  background: #5c5c5c36;
+  border-radius: 10px
+}
+*::-webkit-scrollbar-thumb {
+  background: #575757;
+  border-radius: 10px
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #4c4c4c;
+}
+.bg-gradient{
+  background: rgb(81,81,81);
+  background: linear-gradient(180deg, rgba(78,78,78,1) 20%, rgba(25,25,25,1) 100%);
+}
+h1 {
+  font-size: 1rem;
+}
+span{
+  letter-spacing: 0.025rem;
+}
+textarea {
+  resize: none!important;
+}
+input::placeholder{
+  color: rgb(134, 134, 134);
+}
+/* #sidebarMenu{
+  background-image: url(https://arenafan.tv/app/assets/static/BARRA\ DE\ BUSQUEDA.jpg);
+} */
+.scouting-background__image{
+  background-image: url(../RECURSOS\ GRÁFICOS/INTERFAZ\ VISOR\ SCOUTING\ VERTICAL.jpg);
+}
+
+@media screen and (min-width: 769px) {
+  .home-background__image{
+    background-color: #131313;
+  }
+}
+.user-background__image{
+  background-color: #131313;
+}
+@media screen and (min-width: 640px) {
+  .user-background__image{
+    background-color: #131313;
+  }
+}
+ul {
+  margin: 0;
+}
+ul.dashed {
+  list-style-type: none;
+}
+ul.dashed > li {
+  text-indent: -5px;
+}
+ul.dashed > li:before {
+  content: "-";
+  text-indent: -5px;
+}
+.active {
+  color: #c9950d!important;
+  opacity: 1!important;
+}
+.show{
+  left: 0!important;
+  transition: all 0.3s ease-in-out;
+}
+.showRight{
+  display: flex!important;
+  flex-direction: column;
+  right: 0!important;
+  transition: all 0.3s ease-in-out;
+}
+#navigationList li, 
+#sidebarLista li{
+  cursor: pointer;
+}

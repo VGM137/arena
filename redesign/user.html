@@ -1,0 +1,521 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./all.css">
+  <link rel="stylesheet" href="./fontawesome.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @font-face {
+      font-family: 'DrukWideBold';
+      src: url(../../RECURSOS\ GRÁFICOS/Druk\ Wide\ Bold.ttf);
+    }
+    @font-face {
+      font-family: 'Avenir';
+      src: url(../../RECURSOS\ GRÁFICOS/AvenirRegular.otf);
+    }
+  </style>
+  <script src="all.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          boxShadow: {
+            'center': '0 0 20px 0 rgba(123, 123, 123, 1)',
+          },
+          colors: {
+            'yellow': '#c9950d',
+            'letters': '#ead3a4',
+            'gray': '#000000',
+            'transLetters': '#edd6a166',
+            'transBlack': '#00000040',
+            'bgTransBlack': '#00000025',
+            'arenaBlue': '#1992b8',
+            'arenaOrange': '#f0492b',
+            'arenaGray': '#7c756b',
+            'bgGray': '#131313',
+            'popupGray':'#292929'
+          },
+          spacing: {
+            '95': '95%',
+            '90': '90%',
+            '85': '85%',
+            '80': '80%',
+            '70': '70%',
+            '65': '65%',
+            '60': '60%',
+            '50': '50%',
+            '55': '55%',
+            '40': '40%',
+            '45': '45%',
+            '35': '35%',
+            '30': '30%',
+            '25': '25%',
+            '20': '20%',
+            '15': '15%',
+            '10': '10%'
+          },
+          minWidth: {
+            '50': '50%'
+          },
+          brightness: {
+            '70': '.70',
+            '30': '.30',
+            '25': '.25',
+          },
+          fontSize:{
+            xxs: '0.5rem',
+            xs: '0.7rem',
+            sm: '0.85rem',
+            s: '0.9rem',
+            base: '1rem'
+          }
+        },
+        fontFamily: {
+          'druk': ['DrukWideBold'],
+          'avenir': ['Avenir']
+        }
+      }
+    }
+  </script>
+  <title>User</title>
+</head>
+<body>
+  <main id="mainContainer">
+    <section class="user-background__image bg-cover h-full overflow-hidden">
+      <section class="h-10 lg:h-10">
+        <header class="relative flex align-center max-sm:justify-end items-center justify-between h-full p-3 bg-transBlack border-b border-yellow">
+          <div id="displaySidebarButton" class="absolute h-max left-3 bottom-50 translate-y-1/2 align-center h-70 lg:hidden">
+            <img id="displaySidebarImg" class="h-[20px] m-auto" src="https://arenafan.tv/app/assets/static/barras.png" alt="Menu desplegable" height="20px" width="20px">
+          </div>
+          <div class="flex w-60 h-80 m-auto items-center justify-center lg:h-full lg:w-20 lg:justify-start m-0">
+            <img class="h-min my-auto sm:w-auto sm:h-full" src="https://arenafan.tv/app/assets/static/ARENA LOGO.png" loading="lazy" alt="logo principal">
+          </div>
+          <nav class="hidden lg:flex lg:w-80 lg:items-center lg:justify-start">
+            <ul id="navigationList" class="flex">
+              <li class="font-druk text-xs text-letters ml-3 opacity-80 hover:opacity-100 ">
+                <a href="#">EN VIVO</a> 
+              </li>
+              <li class="font-druk text-xs text-letters ml-3 opacity-80 hover:opacity-100 ">
+                <a href="#">PROGRAMAS</a> 
+              </li>
+              <li class="active font-druk text-xs text-letters ml-3 opacity-80 hover:opacity-100">
+                <a href="#">GALERÍA FAN</a> 
+              </li>
+              <li class="font-druk text-xs text-letters ml-3 opacity-80 hover:opacity-100 ">
+                <a href="#">SCOUTING</a> 
+              </li>
+            </ul>
+          </nav>
+          <div class="relative">
+            <span id="showUser" class="font-avenir text-white cursor-pointer">
+              <i class="fa-solid fa-user"></i>
+            </span>
+            <div id="userOptions" class="hidden absolute flex flex-col justify-between z-50 bg-popupGray h-[400px] w-[300px] right-0 rounded-2xl shadow-center">
+              <div class="m-5">
+                <div id="" class="liveButton font-avenir mb-3 text-white cursor-pointer text-yellow" wire:click="showStreamingMenu">
+                  <i id="liveIcon" class="fa-solid fa-video"></i>
+                  <label for="liveIcon" class="font-avenir text-white ml-3 cursor-pointer">Transmitir</label>
+                </div>
+                <div id="" class="profileButton font-avenir mb-3 text-white cursor-pointer text-yellow" wire:click="showStreamingMenu">
+                  <i id="profileIcon" class="fa-solid fa-pencil"></i>
+                  <label for="profileIcon" class="font-avenir text-white ml-3 cursor-pointer">Mi perfil</label>
+                </div>
+                <div id="" class="editProfileButton font-avenir mb-3 text-white cursor-pointer text-yellow" wire:click="showStreamingMenu">
+                  <i id="editProfileIcon" class="fa-solid fa-user"></i>
+                  <label for="editProfileIcon" class="font-avenir text-white ml-3 cursor-pointer">Editar perfil</label>
+                </div>
+              </div>
+
+              <div class="border-t border-yellow pt-5">
+                <div id="" class="profileButton font-avenir mb-3 mx-5 text-white cursor-pointer text-yellow" wire:click="showStreamingMenu">
+                  <i id="profileIcon" class="fa-solid fa-plus"></i>
+                  <label for="profileIcon" class="font-avenir text-white ml-3 cursor-pointer">Crear nueva cuenta</label>
+                </div>
+                <div id="" class="logoutBtn font-avenir mb-3 mx-5 text-white cursor-pointer text-yellow" wire:click="showStreamingMenu">
+                  <i id="logouteIcon" class="fa-solid fa-right-from-bracket"></i>
+                  <label for="logouteIcon" class="font-avenir text-white ml-3 cursor-pointer">Cerrar sesión</label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </header>
+
+        <section id="sidebarMenu" class="absolute bg-popupGray top-0 bottom-0 left-[-80%] w-80 z-10 bg-cover h-screen overflow-hidden border-r border-yellow lg:hidden transition duration-300 ease-in-out">
+          <div class="w-90 h-90 m-auto">
+            <div class="flex flex-col h-10 w-full justify-center">
+              <div class="flex h-70 w-full m-auto p-3 items-center justify-between border border-yellow bg-transBlack rounded-xl">
+                <input class="w-85 bg-transparent outline-0 text-white font-avenir placeholder:text-white" type="text" placeholder="Buscar...">
+                <div class="w-auto h-70">
+                  <i class="fa-solid fa-magnifying-glass fa-flip-horizontal fa-xl text-yellow"></i>
+                </div>
+              </div>
+            </div>
+            <nav id="sidebarList" class="h-90 w-full">
+              <ul class="flex flex-col h-full w-95 justify-around">
+                <li class="font-druk text-letters ml-3 border-b-2 opacity-80 hover:opacity-100">
+                  <a href="#">EN VIVO</a> 
+                </li>
+                <li class="font-druk text-letters ml-3 border-b-2 opacity-80 hover:opacity-100">
+                  <a href="#">PROGRAMAS</a> 
+                </li>
+                <li class="font-druk text-letters ml-3 border-b-2 opacity-80 hover:opacity-100">
+                  <a href="#">GALERÍA FAN</a> 
+                </li>
+                <li class="active font-druk text-letters ml-3 border-b-2 opacity-80 hover:opacity-100">
+                  <a href="#">SCOUTING</a> 
+                </li>
+                <li class="font-druk text-letters ml-3 border-b-2 opacity-80 hover:opacity-100">
+                  <a href="#">EDITOR DE VIDEO</a> 
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </section>
+
+        <section id="userOptionsMobile" class="hidden absolute bg-popupGray flex flex-col justify-between top-0 bottom-0 right-[-80%] w-80 z-10 bg-cover h-screen overflow-hidden border-l border-yellow lg:hidden transition duration-300 ease-in-out">
+          <div class="m-5">
+            <div id="" class="liveButton font-avenir mb-3 text-white cursor-pointer text-yellow" wire:click="showStreamingMenu">
+              <i id="liveIconMob" class="fa-solid fa-video"></i>
+              <label for="liveIconMob" class="font-avenir text-white ml-3 cursor-pointer">Transmitir</label>
+            </div>
+            <div id="" class="profileButton font-avenir mb-3 text-white cursor-pointer text-yellow" wire:click="showStreamingMenu">
+              <i id="profileIconMob" class="fa-solid fa-pencil"></i>
+              <label for="profileIconMob" class="font-avenir text-white ml-3 cursor-pointer">Mi perfil</label>
+            </div>
+            <div id="" class="editProfileButton font-avenir mb-3 text-white cursor-pointer text-yellow" wire:click="showStreamingMenu">
+              <i id="editProfileIconMob" class="fa-solid fa-user"></i>
+              <label for="editProfileIconMob" class="font-avenir text-white ml-3 cursor-pointer">Editar perfil</label>
+            </div>
+          </div>
+
+          <div class="border-t border-yellow pt-5">
+            <div id="" class="profileButton font-avenir mb-3 mx-5 text-white cursor-pointer text-yellow" wire:click="showStreamingMenu">
+              <i id="profileIconMob" class="fa-solid fa-plus"></i>
+              <label for="profileIconMob" class="font-avenir text-white ml-3 cursor-pointer">Crear nueva cuenta</label>
+            </div>
+            <div id="" class="logoutButton font-avenir mb-3 mx-5 text-white cursor-pointer text-yellow" wire:click="showStreamingMenu">
+              <i id="editProfileIconMob" class="fa-solid fa-right-from-bracket"></i>
+              <label for="editProfileIconMob" class="font-avenir text-white ml-3 cursor-pointer">Cerrar sesión</label>
+            </div>
+          </div>
+        </section>
+
+        <section id="editProfile" class="hidden absolute h-auto w-full min-h-screen top-0 bg-popupGray z-10 md:top-[10vh]">
+          <div class="flex justify-center items-center h-[10vh] bg-yellow">
+            <div class="closeEdit absolute left-5 text-white">
+              <i class="fa-regular fa-chevron-left "></i>
+            </div>
+            <span class="font-druk text-white text-center">EDITAR PERFIL</span>
+          </div>
+          <div class="h-auto mt-5 sm:w-80 m-auto md:w-full md:flex md:justify-around md:h-[90vh]">
+            <div class="flex flex-col justify-center items-center border-b border-yellow md:border-0 relative w-full h-[20vh] md:w-35 md:m-auto lg:w-auto lg:h-60 lg:mx-auto">
+              <div class="h-90 border-4 border-letters rounded-2xl overflow-hidden m-auto sm:h-full sm:w-auto sm:relative md:w-70 md:h-auto" >
+                <img class="h-full w-auto sm:w-auto sm:h-full md:w-full md:h-auto lg:h-full lg:w-auto" src="https://arenafan.tv/app/assets/static/Recurso 6.jpg" alt="Foto de perfil">
+              </div>
+              <button class="mt-3 mb-5 text-white text-avenir">Cambiar foto de perfil</button>
+            </div>
+            <form action="submit" class="flex flex-col justify-center md:w-55 md:border-l border-yellow" >
+              <div class="w-90 m-auto my-5 sm:w-full md:w-80 md:bg-bgGray md rounded-2xl md:p-7 ">
+                <div class="flex py-4 justify-between border-b border-yellow">
+                  <span class="w-45 text-white mp-3">Nombre de usuario</span>
+                  <input class="w-45 text-white text-end outline-0 bg-transparent" type="text" value="Andrés de Anda">
+                </div>
+                <div class="flex py-4 justify-between border-b border-yellow">
+                  <span class="w-40 text-white mp-3">Edad</span>
+                  <input class="w-45 text-white text-end outline-0 bg-transparent" type="number" value="14">
+                  <span class="w-15 text-white text-end">años</span>
+                </div>
+                <div class="flex py-4 justify-between border-b border-yellow">
+                  <span class="w-45 text-white mp-3">Sexo</span>
+                  <input class="w-45 text-white text-end outline-0 bg-transparent" type="text" value="Hombre">
+                </div>
+                <div class="flex py-4 justify-between border-b border-yellow">
+                  <div class="flex w-50 pr-3 justify-between border-r border-yellow">
+                    <span class="w-45 text-white mp-3">Altura</span>
+                    <input class="w-35 text-white text-end outline-0 bg-transparent" type="number" value="1.60">
+                    <span class="w-10 text-white text-end">m</span>
+                  </div>
+                  <div class="flex w-50 pl-3 justify-between">
+                    <span class="w-45 text-white mp-3">Peso</span>
+                    <input class="w-35 text-white text-end outline-0 bg-transparent" type="number" value="57">
+                    <span class="w-10 text-white text-end">kg</span>
+                  </div>
+                </div>
+                <div class="flex py-4 justify-between items-center border-b border-yellow">
+                  <span class="w-95 text-white mp-3">Tipo de cuenta</span>
+                  <div class="relative z-1 flex w-60 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] md:mb-4 bg-transparent rounded-full text-black ">
+                    <div id="visorType" placeholder="" class="relative z-10 w-full h-full p-2 bg-[#ffffff80] outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center rounded-l-full hover:bg-white focus:bg-white hover:text-black border-r-2 border-bgYellow">
+                      Visor
+                      <input id="" type="radio" class="hidden "></input>
+                    </div>
+                    <div id="atheleteType" class="relative z-10 w-full h-full p-2 bg-[#ffffff80] outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center rounded-r-full hover:bg-white focus:bg-white hover:text-black">
+                      Atleta
+                      <input id="" type="radio" class="hidden "></input>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex py-4 justify-between border-b border-yellow">
+                  <div class="flex w-50 pr-3 justify-between border-r border-yellow">
+                    <span class="w-45 text-white mp-3">Ciudad</span>
+                    <input class="w-45 text-white text-end outline-0 bg-transparent" type="text" value="León">
+                  </div>
+                  <div class="flex w-50 pl-3 justify-between">
+                    <span class="w-45 text-white mp-3">Estado</span>
+                    <input class="w-45 text-white text-end outline-0 bg-transparent" type="text" value="Gto">
+                  </div>
+                </div>
+                <div class="flex py-4 justify-between border-b border-yellow">
+                  <span class="w-50 text-white mp-3">Administrador de videos</span>
+                  <div class="flex justify-end w-50">
+                    <input id="admin" class="hidden w-95 text-white text-end outline-0 bg-transparent" type="text" value="true">
+                    <i class="h-ful text-white fa-regular fa-toggle-on fa-2xl"></i>
+                    <i class="hidden h-ful  text-white fa-regular fa-toggle-off fa-2xl"></i>
+                  </div>
+                </div>
+                <div class="flex w-90 h-90 m-auto mt-10 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] mb-4 sm:mb-8 md:mb-4 bg-transBlack border-2 border-yellow rounded-full hover:bg-yellow hover:text-black">
+                  <button type="submit" class="w-90 text-start text-white bg-transparent outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center hover:text-black ">Guardar</input>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+      </section>
+      
+      <div class="h-90 lg:flex lg:flex-row-reverse lg:m-3">
+        <section class="flex flex-col justify-center items-center border-b border-yellow sm:flex-row sm:h-25 sm:m-auto lg:flex-col lg:h-full lg:w-40 lg:border-l">
+          <div class="flex flex-col w-full sm:flex-row sm:h-full sm:w-50 lg:flex-col lg:h-35 lg:w-full justify-center items-center">
+            <div class="flex justify-center items-center relative w-full h-[150px] sm:h-90 sm:w-40 lg:w-auto lg:h-60 lg:mx-auto">
+              <div class="h-90 border-4 border-letters rounded-2xl overflow-hidden m-auto sm:h-auto sm:w-full sm:relative lg:h-full lg:w-auto" >
+                <img class="h-full w-auto sm:w-full sm:h-auto lg:h-full lg:w-auto" src="https://arenafan.tv/app/assets/static/Recurso 6.jpg" alt="Foto de perfil">
+              </div>
+            </div>
+            <div class="flex flex-col w-full justify-center items-center h-40 sm:h-90 sm:w-50 lg:h-auto lg:w-full">
+              <h1 class="w-max px-2 m-auto tracking-widest text-center text-white font-druk border-b-2 border-white sm:w-90 sm:mx-auto sm:my-0 sm:mb-2 lg:border-0">Andrés De Anda</h1>
+              <span class="w-90 m-auto tracking-widest text-center text-letters text-xs font-druk sm:mx-auto sm:my-0">14 años / Mexicano / Estudiante</span>
+              <button id="showProfileContent" class="w-max px-3 py-1 mx-auto my-[15px] font-druk text-xs text-druk text-white bg-transBlack border rounded-3xl border-yellow sm:hidden hover:text-black hover:bg-yellow">Azañas</button>
+            </div>
+          </div>
+
+          <div id="profileDescription" class="flex w-full lg:flex flex-col border-t border-yellow bg-transBlack sm:w-50 sm:h-90 sm:border-0 sm:bg-transparent lg:h-55 lg:w-90">
+            <h2 class="font-druk text-white text-xs m-3 lg:text-center">DESCRIPCIÓN DREAM FAN:</h2>
+            <div class="w-95 m-auto mb-3 min-h-[100px] max-h-[150px] text-white sm:h-full sm:mb-0 sm:p-2 sm:border border-yellow sm:bg-transBlack sm:rounded-xl lg:rounded-3xl lg:max-h-[400px] lg:p-5">
+              <div class="min-h-[100px] max-h-[150px] w-full h-full sm:max-h-[400px] lg:p-2 ">
+                <textarea class="min-h-[100px] max-h-[150px] w-full font-avenir outline-0 bg-transparent sm:h-full lg:max-h-[400px]">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</textarea>
+              </div>
+            </div>
+          </div>
+        </section>
+  
+        <div class="lg:w-70 lg:flex flex-col">
+          <section id="profileInfo" class="relative flex lg:flex flex-col lg:flex-row lg:h-45">
+            <div class="flex flex-col w-full m-auto mt-5 h-auto text-white items-center border-y border-yellow bg-transBlack sm:w-85 sm:mx-auto lg:flex-row lg:w-auto lg:my-3 lg:block lg:p-5 lg:border lg:rounded-3xl lg:max-h-[400px]">
+              <div class="flex flex-col w-95 lg:w-full my-3">
+                <h2 class="font-druk tracking-widest text-white text-xs">FORTALEZAS:</h2>
+                <span class="text-xxs tracking-widest font-druk text-letters h-min">Máx 150 caracteres</span>
+              </div>
+              <textarea class="max-sm:h-[80px] w-95 mb-3 font-avenir outline-0 bg-transparent max-h-90 lg:w-full lg:h-80">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500</textarea>
+            </div>
+            
+            <div class="relative flex flex-col mt-5 w-full border-y border-yellow bg-transBlack sm:w-85 sm:mx-auto lg:bg-transparent lg:border-0 lg:ml-3 lg:items-center lg:w-80">
+              <h2 class="sticky w-min m-3 font-druk text-white text-xs text-center lg:w-full">REPRESENTANTES:</h2>
+
+              <div class="w-full overflow-y-hidden">
+                <div class="flex w-max justify-center lg:h-full lg:w-full">
+  
+                  <div class="flex py-3 px-9 w-screen justify-center align-center sm:w-50 lg:h-full lg:flex-col lg:px-0">
+                    <div class="h-[120px] border-4 mx-auto border-letters rounded-2xl overflow-hidden lg:auto lg:h-auto">
+                      <img class="h-full w-auto" src="https://arenafan.tv/app/assets/static/Recurso 5.jpg" alt="Foto de perfil">
+                    </div>
+                    <div class="w-70 mx-auto">
+                      <h3 class="font-druk text-white text-xs m-2 lg:text-center">Antonio de Anda</h3>
+                      <ul class="dashed w-max pl-3 m-auto text-letters font-druk tracking-widest text-sm">
+                        <li class="mb-1 text-xs lg:mb-0 whitespace-nowrap">42 Años</li>
+                        <li class="mb-1 text-xs lg:mb-0 whitespace-nowrap">Mexicano</li>
+                        <li class="mb-1 text-xs lg:mb-0 whitespace-nowrap">Padre</li>
+                        <li class="mb-1 text-xs lg:mb-0 whitespace-nowrap">477 935 9803</li>
+                      </ul>
+                    </div>
+                  </div>
+    
+                  <div class="flex py-3 px-9 w-screen justify-center align-center sm:w-50 lg:h-full lg:flex-col lg:px-0">
+                    <div class="h-[120px] border-4 mx-auto border-letters rounded-2xl overflow-hidden lg:auto lg:h-auto">
+                      <img class="h-full w-auto" src="https://arenafan.tv/app/assets/static/Recurso 4.jpg" alt="Foto de perfil">
+                    </div>
+                    <div class="w-70 mx-auto">
+                      <h3 class="font-druk text-white text-xs m-2 lg:text-center">Guillermo Salinas</h3>
+                      <ul class="dashed w-max pl-3 m-auto text-letters font-druk tracking-widest text-sm">
+                        <li class="mb-1 text-xs lg:mb-0 whitespace-nowrap">47 Años</li>
+                        <li class="mb-1 text-xs lg:mb-0 whitespace-nowrap">Mexicano</li>
+                        <li class="mb-1 text-xs lg:mb-0 whitespace-nowrap">Representante</li>
+                        <li class="mb-1 text-xs lg:mb-0 whitespace-nowrap">477 935 9803</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="absolute translate-y-50 top-50 right-3 lg:hidden">
+                <img class="h-[20px] w-auto" src="https://arenafan.tv/app/assets/static/flecha d.png" alt="">
+              </div>
+              <div class="absolute translate-y-50 top-50 left-3 lg:hidden">
+                <img class="h-[20px] w-auto" src="https://arenafan.tv/app/assets/static/flecha i.png" alt="">
+              </div>
+            </div> 
+          </section>
+
+          <section id="profileContent" class="hidden my-5 overflow-auto h-65 sm:h-auto sm:block lg:h-55">
+            <h2 class="sticky w-min m-3 mx-auto font-druk text-white text-xs text-center lg:w-full">AZAÑAS:</h2>
+            
+            <div class="h-auto mx-auto mb-3 grid grid-cols-1 sm:flex-col sm:items-center sm:w-85 sm:grid-cols-2 lg:grid-cols-3 lg:max-h-55 lg:w-full">
+              <div class="relative w-90 h-[200px] mx-auto mb-3 rounded-3xl overflow-hidden lg:h-auto">
+                <img class="w-full h-auto" src="https://arenafan.tv/app/assets/static/Recurso 15.jpg" alt="Preview de azaña">
+                <div class="absolute bottom-0 flex flex-col w-full h-full items-start justify-end bg-gradient-to-t from-[#000000d9] ">
+                  <span class="text-xs ml-3 text-white font-druk">GDL desde media cancha</span>
+                  <ul class="dashed w-90 ml-3 px-3 pb-3 text-letters font-druk tracking-widest text-s">
+                    <li class="mb-1 text-xs">13 años</li>
+                    <li class="mb-1 text-xs">Torneo estatal de GDL</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="relative w-90 h-[200px] mx-auto mb-3 rounded-3xl overflow-hidden lg:h-auto">
+                <img class="w-full h-auto" src="https://arenafan.tv/app/assets/static/Recurso 19.jpg" alt="Preview de azaña">
+                <div class="absolute bottom-0 flex flex-col w-full h-full items-start justify-end bg-gradient-to-t from-[#000000d9] ">
+                  <span class="text-xs ml-3 text-white font-druk">GDL desde media cancha</span>
+                  <ul class="dashed w-90 ml-3 px-3 pb-3 text-letters font-druk tracking-widest text-s">
+                    <li class="mb-1 text-xs">13 años</li>
+                    <li class="mb-1 text-xs">Torneo estatal de GDL</li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="relative w-90 h-[200px] mx-auto mb-3 rounded-3xl overflow-hidden lg:h-auto">
+                <img class="w-full h-auto" src="https://arenafan.tv/app/assets/static/Recurso 13.jpg" alt="Preview de azaña">
+                <div class="absolute bottom-0 flex flex-col w-full h-full items-start justify-end bg-gradient-to-t from-[#000000d9] ">
+                  <span class="text-xs ml-3 text-white font-druk">GDL desde media cancha</span>
+                  <ul class="dashed w-90 ml-3 px-3 pb-3 text-letters font-druk tracking-widest text-s">
+                    <li class="mb-1 text-xs">13 años</li>
+                    <li class="mb-1 text-xs">Torneo estatal de GDL</li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="relative w-90 h-[200px] mx-auto mb-3 rounded-3xl overflow-hidden lg:h-auto">
+                <img class="w-full h-auto" src="https://arenafan.tv/app/assets/static/Recurso 33.jpg" alt="Preview de azaña">
+                <div class="absolute bottom-0 flex flex-col w-full h-full items-start justify-end bg-gradient-to-t from-[#000000d9] ">
+                  <span class="text-xs ml-3 text-white font-druk">GDL desde media cancha</span>
+                  <ul class="dashed w-90 ml-3 px-3 pb-3 text-letters font-druk tracking-widest text-s">
+                    <li class="mb-1 text-xs">13 años</li>
+                    <li class="mb-1 text-xs">Torneo estatal de GDL</li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="relative w-90 h-[200px] mx-auto mb-3 rounded-3xl overflow-hidden lg:h-auto">
+                <img class="w-full h-auto" src="https://arenafan.tv/app/assets/static/Recurso 20.jpg" alt="Preview de azaña">
+                <div class="absolute bottom-0 flex flex-col w-full h-full items-start justify-end bg-gradient-to-t from-[#000000d9] ">
+                  <span class="text-xs ml-3 text-white font-druk">GDL desde media cancha</span>
+                  <ul class="dashed w-90 ml-3 px-3 pb-3 text-letters font-druk tracking-widest text-s">
+                    <li class="mb-1 text-xs">13 años</li>
+                    <li class="mb-1 text-xs">Torneo estatal de GDL</li>
+                  </ul>
+                </div>
+              </div>
+  
+              <div class="relative w-90 h-[200px] mx-auto mb-3 rounded-3xl overflow-hidden lg:h-auto">
+                <img class="w-full h-auto" src="https://arenafan.tv/app/assets/static/Recurso 36.jpg" alt="Preview de azaña">
+                <div class="absolute bottom-0 flex flex-col w-full h-full items-start justify-end bg-gradient-to-t from-[#000000d9] ">
+                  <span class="text-xs ml-3 text-white font-druk">GDL desde media cancha</span>
+                  <ul class="dashed w-90 ml-3 px-3 pb-3 text-letters font-druk tracking-widest text-s">
+                    <li class="mb-1 text-xs">13 años</li>
+                    <li class="mb-1 text-xs">Torneo estatal de GDL</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    let mainContainer = document.querySelector('#mainContainer')
+    document.onclick = (e) => handleMainContainer(e)
+
+    let burgerButton = document.querySelector('#displaySidebarButton')
+    burgerButton.onclick = (e) => handleSidebar(e)
+
+    let showProfileContentButton = document.querySelector('#showProfileContent')
+    showProfileContentButton.onclick = (e) => handleProfile(e)
+
+    const handleMainContainer = (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+      const box = document.getElementById('sidebarMenu');
+      let userOptions = document.querySelector('#userOptionsMobile')
+
+      if (e.target.id !== 'displaySidebarButton' && e.target.id !== 'displaySidebarImg' && !box.contains(e.target)) {
+        box.classList.remove('show');
+      }
+      if (e.target.id !== 'showUser' && e.target.closest('span')?.id !== 'showUser' && e.target.id !== 'userOptionsMobile' && e.target.closest('section')?.id !== 'userOptionsMobile') {
+        userOptions.classList.remove('showRight');
+      }
+    }
+
+    const handleSidebar = (e) => {
+
+      let sidebarMenu = document.querySelector('#sidebarMenu');
+      sidebarMenu?.classList.add('show')
+    }
+
+    const handleProfile = (e) => {
+      let profileDescription = document.querySelector('#profileDescription')
+      let profileInfo = document.querySelector('#profileInfo')
+      let profileContent = document.querySelector('#profileContent')
+      if(e.target.innerHTML === 'Azañas'){
+        e.target.innerHTML = 'Información'
+        profileInfo.classList.add('hidden')
+        profileDescription.classList.add('hidden')
+        profileContent.classList.remove('hidden')
+      }else{
+        e.target.innerHTML = 'Azañas'
+        profileInfo.classList.remove('hidden')
+        profileDescription.classList.remove('hidden')
+        profileContent.classList.add('hidden')
+      }
+    }
+
+
+    let user = document.querySelector('#showUser')
+    user.onclick = (e) => openUserOps()
+    
+    const openUserOps = (e) => {
+      let screenWidth = window.outerWidth
+      console.log(e)
+      
+      if(screenWidth <= 768){
+        let userOptions = document.querySelector('#userOptionsMobile')
+        userOptions?.classList.contains('showRight') ? userOptions.classList.remove('showRight') : userOptions.classList.add('showRight')
+      }else{
+        let userOptions = document.querySelector('#userOptions')
+        userOptions?.classList.contains('hidden') ? userOptions.classList.remove('hidden') : userOptions.classList.add('hidden')
+      }
+    }
+
+    let editProfileBtn = document.querySelectorAll('.editProfileButton')
+    editProfileBtn.forEach(btn => btn.onclick = (e) => toggleEdit(e))
+    let closeProfileBtn = document.querySelectorAll('.closeEdit')
+    closeProfileBtn.forEach(btn => btn.onclick = (e) => toggleEdit(e))
+    
+    const toggleEdit = (e) => {
+      console.log(e)
+      let editScreen = document.querySelector('#editProfile')
+      editScreen.classList.contains('showRight') ? editScreen.classList.remove('showRight') : editScreen.classList.add('showRight')
+    }
+  </script>
+</body>
+</html>
