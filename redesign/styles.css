@@ -49,17 +49,18 @@ input::placeholder{
 
 @media screen and (min-width: 769px) {
   .home-background__image{
+    background-image: url(./images/bgCreateAccount.png);
     background-color: #131313;
   }
 }
 .user-background__image{
   background-color: #131313;
 }
-@media screen and (min-width: 640px) {
+/* @media screen and (min-width: 640px) {
   .user-background__image{
     background-color: #131313;
   }
-}
+} */
 ul {
   margin: 0;
 }

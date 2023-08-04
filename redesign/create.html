@@ -119,7 +119,7 @@
       }
     }
   </script>
-  <title>User</title>
+  <title>Create</title>
 </head>
 <body>
   <main id="mainContainer">
@@ -207,50 +207,6 @@
 
     </div>
   </main>
-  <script>
-    let mainContainer = document.querySelector('#mainContainer')
-    document.onclick = (e) => handleMainContainer(e)
-
-    let burgerButton = document.querySelector('#displaySidebarButton')
-    burgerButton.onclick = (e) => handleSidebar(e)
-
-    let showProfileContentButton = document.querySelector('#showProfileContent')
-    showProfileContentButton.onclick = (e) => handleProfile(e)
-
-    const handleMainContainer = (e) => {
-      e.preventDefault()
-      e.stopPropagation()
-      const box = document.getElementById('sidebarMenu');
-
-      if (e.target.id !== 'displaySidebarButton' && e.target.id !== 'displaySidebarImg' && !box.contains(e.target)) {
-        console.log(e)
-        box.classList.remove('show');
-      }
-    }
-
-    const handleSidebar = (e) => {
-      console.log(e)
-      let sidebarMenu = document.querySelector('#sidebarMenu');
-      sidebarMenu?.classList.add('show')
-    }
-
-    const handleProfile = (e) => {
-      console.log(e)
-      let profileDescription = document.querySelector('#profileDescription')
-      let profileInfo = document.querySelector('#profileInfo')
-      let profileContent = document.querySelector('#profileContent')
-      if(e.target.innerHTML === 'Azañas'){
-        e.target.innerHTML = 'Información'
-        profileInfo.classList.add('hidden')
-        profileDescription.classList.add('hidden')
-        profileContent.classList.remove('hidden')
-      }else{
-        e.target.innerHTML = 'Azañas'
-        profileInfo.classList.remove('hidden')
-        profileDescription.classList.remove('hidden')
-        profileContent.classList.add('hidden')
-      }
-    }
-  </script>
+  
 </body>
 </html>
