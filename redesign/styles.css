@@ -40,6 +40,9 @@ textarea {
 input::placeholder{
   color: rgb(134, 134, 134);
 }
+#scoutingSearch::placeholder{
+  color: rgb(134, 134, 134);
+}
 /* #sidebarMenu{
   background-image: url(https://arenafan.tv/app/assets/static/BARRA\ DE\ BUSQUEDA.jpg);
 } */
@@ -91,4 +94,60 @@ ul.dashed > li:before {
 #navigationList li, 
 #sidebarLista li{
   cursor: pointer;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.posts-wrapper::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+/* .grid-container::-webkit-scrollbar-track {
+  background: #5c5c5c36;
+  border-radius: 10px
+}
+.grid-container::-webkit-scrollbar-thumb {
+  background: #575757;
+  border-radius: 10px
+}
+.grid-container::-webkit-scrollbar-thumb:hover {
+  background: #4c4c4c;
+} */
+
+.item {
+  background-color: #292929;
+  border: 1px solid #292929;
+  text-align: center;
+  max-width: 33.33vw;
+  overflow: hidden;
+}
+
+.item-2x1 {
+  grid-row: span 2;
+  max-height: 66.66vw;
+}
+.item-2x1 img{
+  height: 100%;
+  width: auto;
+  max-width: unset;
+}
+
+.item-1x2 {
+  grid-column: span 2;
+}
+
+@media screen and (min-width: 769px) {
+  .item {
+    max-width: 256px;
+  }
+  .item-2x1 {
+    max-height: 512px;
+  }
+}
+
+.active-scout__nav{
+  border-bottom: solid 2px #c9950d;
+  color: #c9950d!important;
 }
