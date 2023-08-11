@@ -32,6 +32,9 @@
     .rotate{
       background: linear-gradient(0, black, #4d4d4d);
     }
+    .active-radio {
+      background-color: white!important;
+    }
     @media screen and (min-width: 769px) {
       .circle-center{
         position: relative;
@@ -53,6 +56,7 @@
         background: linear-gradient(135deg, #d47f00, #facb61);
       }
     }
+
   </style>
   <script src="all.js"></script>
   <script>
@@ -136,68 +140,60 @@
           <div class="relative z-10 w-full h-10 flex text-xl">
             <h1 class="font-druk text-white w-auto h-auto m-auto md:text-2xl">CREAR CUENTA</h1>
           </div>
-          <form action="submit" class="relative z-10 w-full h-90 flex flex-col text-xl items-center ">
+          <form id='createUserForm' action="submit" class="relative z-10 w-full h-full flex flex-col text-xl items-center ">
             <!-- <form action="submit"> -->
-              <div class="flex w-90 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] p-2 mb-4 md:mb-4 bg-white rounded-full text-black hover:bg-[#ffffff80] hover:text-black">
-                <input id="" placeholder="Nombre" class="w-90 text-start text-black placeholder:italic bg-transparent outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base"></input>
-              </div>
-              <div class="flex w-90 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] p-2 mb-4 md:mb-4 bg-white rounded-full text-black hover:bg-[#ffffff80] hover:text-black">
-                <input id="" placeholder="Edad" class="w-90 text-start text-black placeholder:italic bg-transparent outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base"></input>
-              </div>
-              <div class="relative z-1 flex w-60 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] mb-4 md:mb-4 bg-transparent rounded-full text-black ">
-                <div id="visorType" placeholder="" class="relative z-10 w-full h-full p-2 bg-[#ffffff80] outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center rounded-l-full hover:bg-white focus:bg-white hover:text-black border-r-2 border-bgYellow">
-                  Visor
-                  <input id="" type="radio" class="hidden "></input>
+              <fieldset id="formFielset" class="relative z-10 w-full h-90 flex flex-col text-xl items-center ">
+
+                <div class="flex w-90 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] p-2 mb-4 md:mb-4 bg-white rounded-full text-black hover:bg-[#ffffff80] hover:text-black">
+                  <input id="name" placeholder="Nombre" class="w-90 text-start text-black placeholder:italic bg-transparent outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base"></input>
                 </div>
-                <div id="atheleteType" class="relative z-10 w-full h-full p-2 bg-[#ffffff80] outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center rounded-r-full hover:bg-white focus:bg-white hover:text-black">
-                  Atleta
-                  <input id="" type="radio" class="hidden "></input>
+                <div class="flex w-90 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] p-2 mb-4 md:mb-4 bg-white rounded-full text-black hover:bg-[#ffffff80] hover:text-black">
+                  <input id="age" placeholder="Edad" class="w-90 text-start text-black placeholder:italic bg-transparent outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base"></input>
                 </div>
-              </div>
-              <div class="flex w-90 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] p-2 mb-4 md:mb-4 bg-white rounded-full text-black hover:bg-[#ffffff80] hover:text-black">
-                <input id="" placeholder="Ocupación" class="w-90 text-start bg-transparent outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base placeholder:italic"></input>
-              </div>
-              <!-- <div class="relative z-1 flex w-90 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] mb-4 sm:mb-8 md:mb-7 bg-transparent rounded-full text-black "> -->
-              <div class="flex w-90 h-90 justify-center items-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] p-2 mb-4 md:mb-4 bg-white rounded-full text-black">
-                <select id="" class="flex w-90 h-auto m-auto items-center justify-center font-avenir text-black outline-0 text-base" name="Sexo" id="sexSelect">
-                  <option disabled class="text-black font-avenir" selected value="hombre">Seleccionar</option>
-                  <option class="text-black font-avenir" value="hombre">Hombre</option>
-                  <option class="text-black font-avenir" value="mujer">Mujer</option>
-                  <option class="text-black font-avenir" value="no binario">No binario</option>
-                </select>
-                <!-- <div id="visorType" class="relative z-10 w-full h-full p-2 bg-[#ffffff80] outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center rounded-l-full hover:bg-white focus:bg-white hover:text-black border-r-2 border-bgYellow">
-                  Hombre
-                  <input type="radio" class="hidden "></input>
+                <div class="relative z-1 flex w-60 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] mb-4 md:mb-4 bg-transparent rounded-full text-black ">
+                  <div id="visorType" placeholder="" class="relative z-10 w-full h-full p-2 bg-[#ffffff80] outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center rounded-l-full hover:bg-white focus:bg-white hover:text-black border-r-2 border-bgYellow">
+                    Visor
+                    <input id="visor" type="radio" class="hidden" name="profileType"></input>
+                  </div>
+                  <div id="athleteType" class="relative z-10 w-full h-full p-2 bg-[#ffffff80] outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center rounded-r-full hover:bg-white focus:bg-white hover:text-black">
+                    Atleta
+                    <input id="athlete" type="radio" class="hidden" name="profileType"></input>
+                  </div>
                 </div>
-                <div id="atheleteType" class="relative z-10 w-full h-full p-2 bg-[#ffffff80] outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center hover:bg-white focus:bg-white hover:text-black border-r-2 border-bgYellow">
-                  Mujer
-                  <input type="radio" class="hidden "></input>
+                <div class="flex w-90 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] p-2 mb-4 md:mb-4 bg-white rounded-full text-black hover:bg-[#ffffff80] hover:text-black">
+                  <input id="occupation" placeholder="Ocupación" class="w-90 text-start bg-transparent outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base placeholder:italic"></input>
                 </div>
-                <div id="atheleteType" class="relative text-start z-10 w-full h-full p-2 bg-[#ffffff80] outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center rounded-r-full hover:bg-white focus:bg-white hover:text-black">
-                  <input placeholder="Me identifico como:" type="text" class="w-full h-full text-start bg-transparent outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-start"></input>
-                </div> -->
-              </div>
-              <div class="flex w-90 justify-between xs:w-85 max-w-[400px]">
-                <div class="flex w-45 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] p-2 mb-4 md:mb-4 bg-white rounded-full text-black hover:bg-[#ffffff80] hover:text-black">
-                  <input id="" placeholder="Altura (m)" type="number" class="w-90 text-start text-black placeholder:italic bg-transparent outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center"></input>
+                <!-- <div class="relative z-1 flex w-90 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] mb-4 sm:mb-8 md:mb-7 bg-transparent rounded-full text-black "> -->
+                <div class="flex w-90 h-90 justify-center items-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] p-2 mb-4 md:mb-4 bg-white rounded-full text-black">
+                  <select id="gender" class="flex w-90 h-auto m-auto items-center justify-center font-avenir text-black outline-0 text-base" name="Sexo" id="sexSelect">
+                    <option disabled class="text-black font-avenir" selected value="hombre">Seleccionar</option>
+                    <option class="text-black font-avenir" value="hombre">Hombre</option>
+                    <option class="text-black font-avenir" value="mujer">Mujer</option>
+                    <option class="text-black font-avenir" value="no binario">No binario</option>
+                  </select>
                 </div>
-                <div class="flex w-45 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] p-2 mb-4 md:mb-4 bg-white rounded-full text-black hover:bg-[#ffffff80] hover:text-black">
-                  <input id="" placeholder="Peso (kg)" type="number" class="w-90 text-start text-black placeholder:italic bg-transparent outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center"></input>
+                <div class="flex w-90 justify-between xs:w-85 max-w-[400px]">
+                  <div class="flex w-45 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] p-2 mb-4 md:mb-4 bg-white rounded-full text-black hover:bg-[#ffffff80] hover:text-black">
+                    <input id="height" placeholder="Altura (m)" type="number" class="w-90 text-start text-black placeholder:italic bg-transparent outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center"></input>
+                  </div>
+                  <div class="flex w-45 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] p-2 mb-4 md:mb-4 bg-white rounded-full text-black hover:bg-[#ffffff80] hover:text-black">
+                    <input id="weight" placeholder="Peso (kg)" type="number" class="w-90 text-start text-black placeholder:italic bg-transparent outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center"></input>
+                  </div>
                 </div>
-              </div>
-              <div class="flex w-90 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] p-2 mb-4 md:mb-4 bg-white rounded-full text-black hover:bg-[#ffffff80] hover:text-black">
-                <input id="password" placeholder="Contraseña" type="password" class="w-90 text-start text-black placeholder:italic bg-transparent outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center"></input>
-              </div>
-              <div class="flex w-90 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] p-2 mb-4 sm:mb-3 bg-white rounded-full text-black hover:bg-[#ffffff80] hover:text-black">
-                <input id="passwordConfirm" placeholder="Confirmar contraseña" type="password" class="w-90 text-start text-black placeholder:italic bg-transparent outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center"></input>
-              </div>
-              <div class="w-90 mb-3 max-w-[400px]">
-                <input type="checkbox" required id="legal" name="legal" class=""></input>
-                <label class="text-avenir text-sm text-white font-xs md:text-black md:font-sm" for="legal">Confirmo que he leído y acepto los términos y condiciones</label>
-              </div>
-              <div class="flex w-90 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] mb-4 sm:mb-8 md:mb-4 bg-transBlack border-2 border-yellow rounded-full md:border-transparent hover:bg-black hover:text-white">
-                <button type="submit" class="w-90 text-start text-white md:text-black bg-transparent outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center hover:text-white ">Registrarse</input>
-              </div>
+                <div class="flex w-90 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] p-2 mb-4 md:mb-4 bg-white rounded-full text-black hover:bg-[#ffffff80] hover:text-black">
+                  <input id="password" placeholder="Contraseña" type="password" class="w-90 text-start text-black placeholder:italic bg-transparent outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center"></input>
+                </div>
+                <div class="flex w-90 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] p-2 mb-4 sm:mb-3 bg-white rounded-full text-black hover:bg-[#ffffff80] hover:text-black">
+                  <input id="passwordConfirm" placeholder="Confirmar contraseña" type="password" class="w-90 text-start text-black placeholder:italic bg-transparent outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center"></input>
+                </div>
+                <div class="w-90 mb-3 max-w-[400px]">
+                  <input type="checkbox" id="legal" name="legal" class=""></input>
+                  <label class="text-avenir text-sm text-white font-xs md:text-black md:font-sm" for="legal">Confirmo que he leído y acepto los términos y condiciones</label>
+                </div>
+                <div class="flex w-90 h-90 justify-center max-w-[400px] xs:w-85 cursor-pointer h-[40px] mb-4 sm:mb-8 md:mb-4 bg-transBlack border-2 border-yellow rounded-full md:border-transparent hover:bg-black hover:text-white">
+                  <button type="submit" class="w-90 text-start text-white md:text-black bg-transparent outline-0 border-0 flex items-center justify-center font-avenir font-bold text-base text-center hover:text-white ">Registrarse</input>
+                </div>
+              </fieldset>
             <!-- </form> -->
           </form>
         </div>
@@ -207,6 +203,70 @@
 
     </div>
   </main>
+
+  <script>
+    window.onload = () => {
+
+      let visorType = document.getElementById('visorType')
+      let athleteType = document.getElementById('athleteType')
+      let visorRadio = document.querySelector('#visor')
+      let athleteRadio = document.querySelector('#athlete')
+
+  
+      visorType.onclick = (e) => {
+        visorRadio.click()
+        visorType.classList.add('active-radio')
+        athleteType.classList.remove('active-radio')
+      }
+      athleteType.onclick = (e) => {
+        athleteRadio.click()
+        athleteType.classList.add('active-radio')
+        visorType.classList.remove('active-radio')
+      }
+  
+      let form = document.getElementById('createUserForm')
+      form.onsubmit = (e) => handleSubmit(e)
+      
+      let formFields = document.getElementById('formFielset')
+      console.log(formFields)
+  
+      const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(e)
+
+        let fields = Array.from(e.target.firstElementChild.elements)
+        console.log(fields)
+
+        let isValid = true
+  
+        fields.forEach(element => {
+          if(element.id === 'name'){
+  
+          }else if(element.id === 'age'){
+  
+          }else if(element.id === 'visor'){
+  
+          }else if(element.id === 'athelete'){
+  
+          }else if(element.id === 'occupation'){
+  
+          }else if(element.id === 'gender'){
+  
+          }else if(element.id === 'height'){
+  
+          }else if(element.id === 'weight'){
+  
+          }else if(element.id === 'password'){
+  
+          }else if(element.id === 'passwordConfirm'){
+  
+          }else if(element.id === 'legal'){
+  
+          }
+        })
+      }
+    }
+  </script>
   
 </body>
 </html>
