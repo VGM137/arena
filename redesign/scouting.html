@@ -88,7 +88,7 @@
 </head>
 <body>
   <main id="mainContainer" class="bg-popupGray">
-    <section class="user-background__image bg-cover h-auto overflow-hidden">
+    <section class="fixed user-background__image bg-cover h-auto overflow-hidden">
       <section class="h-10 lg:h-10">
         <header class="relative flex align-center max-sm:justify-end items-center justify-between h-full p-3 bg-transBlack border-b border-yellow">
           <div id="displaySidebarButton" class="absolute h-max left-3 bottom-50 translate-y-1/2 align-center h-70 lg:hidden">
@@ -290,7 +290,7 @@
     </section>
       
     <section class="h-screen m-auto bg-popupGray max-w-[768px]">
-      <div class="h-10 w-full">
+      <div class="h-10 w-full hidden sm:block">
         <div class="relative h-50 flex">
           <div class="absolute left-5 top-50 translate-y-[-50%]"><i class="fa-regular fa-chevron-left fa-sm text-white"></i></div>
           <div class="flex h-full w-full justify-center items-center pl-10">
@@ -302,15 +302,56 @@
             </div>
           </div>
         </div>
-        <div class="grid h-50 w-full grid-cols-4">
-          <div id="forYou" class="active-scout__nav scouting-nav__item flex justify-center items-center text-white"><span class="h-auto w-auto text-avenir font-semibold">Para ti</span></div>
+        <div class="grid h-50 w-full grid-cols-4 sm:grid-cols-5">
+          <div id="feed" class="active-scout__nav hidden scouting-nav__item flex justify-center items-center text-white sm:flex"><span class="h-auto w-auto text-avenir font-semibold">Feed</span></div>
+          <div id="forYou" class="scouting-nav__item flex justify-center items-center text-white"><span class="h-auto w-auto text-avenir font-semibold">Para ti</span></div>
           <div id="accounts" class="scouting-nav__item flex justify-center items-center text-white"><span class="h-auto w-auto text-avenir font-semibold">Cuentas</span></div>
           <div id="hashtags" class="scouting-nav__item flex justify-center items-center text-white"><span class="h-auto w-auto text-avenir font-semibold">Hashtags</span></div>
           <div id="sports" class="scouting-nav__item flex justify-center items-center text-white"><span class="h-auto w-auto text-avenir font-semibold">Deportes</span></div>
         </div>
       </div>
 
-      <div id="forYouWrapper" class="scouting-content__wrapper h-90 overflow-scroll">
+      <div id="feedWrapper" class="scouting-content__wrapper h-full overflow-scroll">
+        <div class="flex flex-col h-auto w-full">
+          <div class="h-full w-full">
+            <img src="./images/dominadas.png" class="h-full w-auto" alt="Contenido del reel">
+          </div>
+          <div class="absolute h-10 w-full bottom-0 font-white">
+            <div class="h-auto w-full">
+              <img src="./images/bottom-bar.png" alt="Barra inferior">
+              <div class="absolute bottom-50 translate-y-50 flex w-full justify-between text-2xl text-white">
+                <div class="flex w-32 justify-arround">
+                  <div class="flex w-50 flex-col justify-center items-center">
+                    <i class="fa-solid fa-house fa-lg text-2xl"></i>
+                    <span class="font-avenir text-sm h-min leading-normal">Inicio</span>
+                  </div>
+                  <div class="flex w-50 flex-col justify-center items-center">
+                    <i class="fa-solid fa-magnifying-glass fa-flip-horizontal fa-lg text-2xl"></i>
+                    <span class="font-avenir text-sm h-min leading-normal">Buscar</span>
+                  </div>
+                </div>
+                <div class="absolute left-50 translate-y-[-50%] translate-x-[-50%] flex justify-center w-36">
+                  <div class="flex justify-center items-center h-[60px] w-[60px] rounded-full bg-white">
+                    <i class="fa-solid fa-plus text-black"></i>
+                  </div>
+                </div>
+                <div class="flex w-32 justify-arround">
+                  <div class="flex w-50 flex-col justify-center items-center">
+                    <i class="fa-solid fa-signal-stream fa-lg text-2xl"></i>
+                    <span class="font-avenir text-sm h-min leading-normal">En vivo</span>
+                  </div>
+                  <div class="flex w-50 flex-col justify-center items-center">
+                    <i class="fa-solid fa-user fa-lg text-2xl"></i>
+                    <span class="font-avenir text-sm h-min leading-normal">Perfil</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="forYouWrapper" class="scouting-content__wrapper h-90 overflow-scroll hidden">
         <div class="grid-container h-auto w-full">
           <div class="item"><img src="./images/beis1.jpg" alt=""></div>
           <div class="item"><img src="./images/fut.jpg" alt=""></div>
