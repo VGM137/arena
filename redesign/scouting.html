@@ -59,7 +59,8 @@
             '25': '25%',
             '20': '20%',
             '15': '15%',
-            '10': '10%'
+            '10': '10%',
+            'five': '5%'
           },
           minWidth: {
             '50': '50%'
@@ -88,16 +89,18 @@
 </head>
 <body>
   <main id="mainContainer" class="bg-popupGray">
-    <section class="fixed user-background__image bg-cover h-auto overflow-hidden">
+
+    <section id="mainHeader" class="hidden z-50 user-background__image bg-cover h-auto  sm:block">
+
       <section class="h-10 lg:h-10">
         <header class="relative flex align-center max-sm:justify-end items-center justify-between h-full p-3 bg-transBlack border-b border-yellow">
           <div id="displaySidebarButton" class="absolute h-max left-3 bottom-50 translate-y-1/2 align-center h-70 lg:hidden">
             <img id="displaySidebarImg" class="h-[20px] m-auto" src="https://arenafan.tv/app/assets/static/barras.png" alt="Menu desplegable" height="20px" width="20px">
           </div>
-          <div class="flex w-60 h-80 m-auto items-center justify-center lg:h-full lg:w-20 lg:justify-start m-0">
+          <div class="flex w-60 h-70 m-auto items-center justify-center lg:h-full lg:w-20 lg:justify-start m-0 xl:w-auto">
             <img class="h-min my-auto sm:w-auto sm:h-full" src="https://arenafan.tv/app/assets/static/ARENA LOGO.png" loading="lazy" alt="logo principal">
           </div>
-          <nav class="hidden lg:flex lg:w-80 lg:items-center lg:justify-start">
+          <nav class="hidden lg:flex lg:w-50 lg:items-center lg:justify-start xl:w-35">
             <ul id="navigationList" class="flex">
               <li class="font-druk text-xs text-white ml-3 opacity-80 hover:opacity-100 ">
                 <a href="#">EN VIVO</a> 
@@ -113,9 +116,23 @@
               </li>
             </ul>
           </nav>
-          <div class="relative">
+          <div class="flex h-full w-25 justify-center items-center xl:w-20 xl:ml-3">
+            <div class="relative h-70 w-full rounded-full bg-popupGray ">
+              <input id="scoutingSearch" class="outline-0 p-3 bg-transparent w-90 h-full text-white" type="text" placeholder="Buscar (usuarios y atletas)">
+              <div class="absolute right-5 top-50 translate-y-[-50%]">
+                <i class="fa-solid fa-magnifying-glass fa-flip-horizontal fa-lg text-arenaGray "></i>
+              </div>
+            </div>
+          </div>
+          <div id="mobileFeedAddDesk" class="hidden lg:flex justify-around w-five rounded-full xl:bg-popupGray xl:ml-3 xl:w-10 xl-items-center xl:h-70 p-2">
+            <span class="hidden font-druk text-sm text-white my-auto mx-2 xl:flex xl:h-min">CREAR</span>
+            <div class="group flex justify-center items-center h-[30px] w-[30px] rounded-full bg-white m-auto hover:bg-yellow">
+              <i class="fa-solid fa-plus text-black group-hover:text-white"></i>
+            </div>
+          </div>
+          <div class="relative ml-2">
             <span id="showUser" class="font-avenir text-white cursor-pointer">
-              <i class="fa-solid fa-user"></i>
+              <i class="fa-solid fa-user fa-lg"></i>
             </span>
             <div id="userOptions" class="hidden absolute flex flex-col justify-between z-50 bg-popupGray h-[400px] w-[300px] right-0 rounded-2xl shadow-center">
               <div class="m-5">
@@ -147,7 +164,7 @@
           </div>
         </header>
 
-        <section id="sidebarMenu" class="absolute bg-popupGray top-0 bottom-0 left-[-80%] w-80 z-10 bg-cover h-screen overflow-hidden border-r border-yellow lg:hidden transition duration-300 ease-in-out">
+        <section id="sidebarMenu" class="absolute bg-popupGray top-0 bottom-0 left-[-80%] w-80 z-40 bg-cover h-screen overflow-hidden border-r border-yellow lg:hidden transition duration-300 ease-in-out">
           <div class="w-90 h-90 m-auto">
             <div class="flex flex-col h-10 w-full justify-center">
               <div class="flex h-70 w-full m-auto p-3 items-center justify-between border border-yellow bg-transBlack rounded-xl">
@@ -179,7 +196,7 @@
           </div>
         </section>
 
-        <section id="userOptionsMobile" class="hidden absolute bg-popupGray flex flex-col justify-between top-0 bottom-0 right-[-80%] w-80 z-10 bg-cover h-screen overflow-hidden border-l border-yellow lg:hidden transition duration-300 ease-in-out">
+        <section id="userOptionsMobile" class="hidden absolute bg-popupGray flex flex-col justify-between top-0 bottom-0 right-[-80%] w-80 z-40 bg-cover h-screen overflow-hidden border-l border-yellow lg:hidden transition duration-300 ease-in-out">
           <div class="m-5">
             <div id="" class="liveButton font-avenir mb-3 text-white cursor-pointer text-yellow" wire:click="showStreamingMenu">
               <i id="liveIconMob" class="fa-solid fa-video"></i>
@@ -207,7 +224,7 @@
           </div>
         </section>
 
-        <section id="editProfile" class="hidden absolute h-auto w-full min-h-screen top-0 bg-popupGray z-10 md:top-[10vh]">
+        <section id="editProfile" class="hidden absolute h-auto w-full min-h-screen top-0 bg-popupGray z-50 md:top-[10vh]">
           <div class="flex justify-center items-center h-[10vh] bg-yellow">
             <div class="closeEdit absolute left-5 text-white">
               <i class="fa-regular fa-chevron-left "></i>
@@ -287,803 +304,1209 @@
           </div>
         </section>
       </section>
+
     </section>
       
-    <section class="h-screen m-auto bg-popupGray max-w-[768px]">
-      <div class="h-10 w-full hidden sm:block">
-        <div class="relative h-50 flex">
-          <div class="absolute left-5 top-50 translate-y-[-50%]"><i class="fa-regular fa-chevron-left fa-sm text-white"></i></div>
-          <div class="flex h-full w-full justify-center items-center pl-10">
-            <div class="relative h-70 w-95 rounded-full bg-bgGray ">
-              <input id="scoutingSearch" class="outline-0 p-3 bg-transparent w-90 h-full text-white" type="text" placeholder="Buscar (usuarios y atletas)">
-              <div id="scoutingBack" class="absolute z-1 right-5 top-50 translate-y-[-50%] ">
-                <i class="fa-solid fa-magnifying-glass fa-flip-horizontal fa-lg text-arenaGray "></i>
+    <div id="scoutingFull" class="h-screen sm:h-90">
+
+      <div class="hidden h-full w-90 lg:flex flex-col items-center justify-around m-auto">
+        <div class="h-45">
+          <div class="flex h-10 items-center justify-center">
+            <div class="flex w-20 text-white">
+              <i class="fa-solid fa-tv fa-lg text-2xl m-auto"></i>
+            </div>
+            <sapn class="text-xs font-druk text-white w-80 m-auto">PROGRAMAS RECOMENDADOS</span>
+          </div>
+          <div class="h-90 overflow-y-scroll">
+            <div class="flex items-center mt-[10px]">
+              <div class="w-40 rounded-md">
+                <img src="https://arenafan.tv/app/assets/static/Recurso 23.jpg" alt="Miniatura de programa">
+              </div>
+              <span class="font-druk text-letters w-60 mx-[10px] text-xxs">LA ZONA</span>
+            </div>
+
+            <div class="flex items-center mt-[10px]">
+              <div class="w-40 rounded-md">
+                <img src="https://arenafan.tv/app/assets/static/Recurso 24.jpg" alt="Miniatura de programa">
+              </div>
+              <span class="font-druk text-letters w-60 mx-[10px] text-xxs">FÚTBOL PICANTE</span>
+            </div>
+
+            <div class="flex items-center mt-[10px]">
+              <div class="w-40 rounded-md">
+                <img src="https://arenafan.tv/app/assets/static/Recurso 22.jpg" alt="Miniatura de programa">
+              </div>
+              <span class="font-druk text-letters w-60 mx-[10px] text-xxs">TOUCHDOWN TITANS</span>
+            </div>
+
+            <div class="flex items-center mt-[10px]">
+              <div class="w-40 rounded-md">
+                <img src="https://arenafan.tv/app/assets/static/Recurso 21.jpg" alt="Miniatura de programa">
+              </div>
+              <span class="font-druk text-letters w-60 mx-[10px] text-xxs">TODO DEPORTES</span>
+            </div>
+
+            <div class="flex items-center mt-[10px]">
+              <div class="w-40 rounded-md">
+                <img src="https://arenafan.tv/app/assets/static/Recurso 20.jpg" alt="Miniatura de programa">
+              </div>
+              <span class="font-druk text-letters w-60 mx-[10px] text-xxs">WARRIOR WAYS</span>
+            </div>
+
+            <div class="flex items-center mt-[10px]">
+              <div class="w-40 rounded-md">
+                <img src="https://arenafan.tv/app/assets/static/Recurso 19.jpg" alt="Miniatura de programa">
+              </div>
+              <span class="font-druk text-letters w-60 mx-[10px] text-xxs">ENCIENDE LA MECHA</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="h-45">
+          <div class="flex h-10 items-center justify-center">
+            <div class="flex w-20 text-white">
+              <i class="fa-solid fa-signal-stream fa-lg text-2xl m-auto"></i>
+            </div>
+            <sapn class="text-xs font-druk text-white w-80 m-auto">TRANSMITIDOS RECIENTEMENTE</span>
+          </div>
+          <div class="h-90 overflow-y-scroll">
+            <div class="flex items-center mt-[10px]">
+              <div class="w-40 rounded-md">
+                <img src="https://arenafan.tv/app/assets/static/Recurso 37.jpg" alt="Miniatura de transmisión">
+              </div>
+              <span class="font-druk text-letters w-60 mx-[10px] text-xxs">Alanta vs Holanda</span>
+            </div>
+            
+            <div class="flex items-center mt-[10px]">
+              <div class="w-40 rounded-md">
+                <img src="https://arenafan.tv/app/assets/static/Recurso 38.jpg" alt="Miniatura de transmisión">
+              </div>
+              <span class="font-druk text-letters w-60 mx-[10px] text-xxs">Chivas vs Tigres</span>
+            </div>
+            
+            <div class="flex items-center mt-[10px]">
+              <div class="w-40 rounded-md">
+                <img src="https://arenafan.tv/app/assets/static/Recurso 33.jpg" alt="Miniatura de transmisión">
+              </div>
+              <span class="font-druk text-letters w-60 mx-[10px] text-xxs">Canelo vs Mayweather</span>
+            </div>
+            
+            <div class="flex items-center mt-[10px]">
+              <div class="w-40 rounded-md">
+                <img src="https://arenafan.tv/app/assets/static/Recurso 34.jpg" alt="Miniatura de transmisión">
+              </div>
+              <span class="font-druk text-letters w-60 mx-[10px] text-xxs">Dodgers vs Giants</span>
+            </div>
+            
+            <div class="flex items-center mt-[10px]">
+              <div class="w-40 rounded-md">
+                <img src="https://arenafan.tv/app/assets/static/Recurso 36.jpg" alt="Miniatura de transmisión">
+              </div>
+              <span class="font-druk text-letters w-60 mx-[10px] text-xxs">Buccaneers vs Patriots</span>
+            </div>
+            
+            <div class="flex items-center mt-[10px]">
+              <div class="w-40 rounded-md">
+                <img src="https://arenafan.tv/app/assets/static/Recurso 35.jpg" alt="Miniatura de transmisión">
+              </div>
+              <span class="font-druk text-letters w-60 mx-[10px] text-xxs">Paises Bajos vs Ecuador</span>
+            </div>
+            <div class="flex items-center mt-[10px]">
+              <div class="w-40 rounded-md">
+                <img src="https://arenafan.tv/app/assets/static/Recurso 14.jpg" alt="Miniatura de transmisión">
+              </div>
+              <span class="font-druk text-letters w-60 mx-[10px] text-xxs">GreenBay vs Saints</span>
+            </div>
+            <div class="flex items-center mt-[10px]">
+              <div class="w-40 rounded-md">
+                <img src="https://arenafan.tv/app/assets/static/Recurso 17.jpg" alt="Miniatura de transmisión">
+              </div>
+              <span class="font-druk text-letters w-60 mx-[10px] text-xxs">Paises Bajos vs Ecuador</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section id="scoutingWrapper" class="relative z-10 h-full w-full m-auto bg-popupGray max-w-[768px]">
+        <div id="feedNavigation" class="h-10 w-full hidden sm:flex sm:h-five sm:items-end">
+          <div class="relative h-50 flex sm:hidden">
+            <div id="scoutingBack" class="absolute z-10 w-10 h-full">
+              <i class="fa-regular fa-chevron-left fa-sm text-white absolute left-50 top-50 translate-y-[-50%] translate-x-[-50%] "></i>
+            </div>
+            <div class="flex h-full w-full justify-center items-center pl-10">
+              <div class="relative h-70 w-95 rounded-full bg-bgGray ">
+                <input id="scoutingSearch" class="outline-0 p-3 bg-transparent w-90 h-full text-white" type="text" placeholder="Buscar (usuarios y atletas)">
+                <div class="absolute right-5 top-50 translate-y-[-50%]">
+                  <i class="fa-solid fa-magnifying-glass fa-flip-horizontal fa-lg text-arenaGray "></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid h-50 w-full grid-cols-4 sm:grid-cols-5 sm:h-full">
+            <div id="feed" class="hidden scouting-nav__item flex justify-center items-center text-white sm:flex"><span class="h-auto w-auto text-avenir font-semibold">Feed</span></div>
+            <div id="forYou" class="scouting-nav__item flex justify-center items-center text-white"><span class="h-auto w-auto text-avenir font-semibold">Para ti</span></div>
+            <div id="accounts" class="scouting-nav__item flex justify-center items-center text-white"><span class="h-auto w-auto text-avenir font-semibold">Cuentas</span></div>
+            <div id="hashtags" class="scouting-nav__item flex justify-center items-center text-white"><span class="h-auto w-auto text-avenir font-semibold">Hashtags</span></div>
+            <div id="sports" class="scouting-nav__item flex justify-center items-center text-white"><span class="h-auto w-auto text-avenir font-semibold">Deportes</span></div>
+          </div>
+        </div>
+  
+        <div id="feedMenu" class="absolute z-10 h-auto w-full bottom-0 font-white sm:hidden">
+          <div class="relative h-auto w-full max-w-[425px] m-auto">
+            <img src="./images/bottom-bar.png" alt="Barra inferior">
+            <div class="absolute bottom-50 translate-y-50 flex h-full w-full justify-between text-2xl text-white">
+              <div class="flex w-32 justify-arround">
+                <div id="mobileFeedHome" class="flex w-50 flex-col justify-center items-center hover:text-yellow">
+                  <i class="fa-solid fa-house fa-lg text-2xl"></i>
+                  <span class="font-avenir text-sm h-min leading-normal">Inicio</span>
+                </div>
+                <div id="mobileFeedSearch" class="flex w-50 flex-col justify-center items-center hover:text-yellow">
+                  <i class="fa-solid fa-magnifying-glass fa-flip-horizontal fa-lg text-2xl"></i>
+                  <span class="font-avenir text-sm h-min leading-normal">Buscar</span>
+                </div>
+              </div>
+              <div id="mobileFeedAdd" class="absolute left-50 translate-y-[-50%] translate-x-[-50%] flex justify-center w-36">
+                <div class="group flex justify-center items-center h-[60px] w-[60px] rounded-full bg-white hover:bg-yellow">
+                  <i class="fa-solid fa-plus text-black group-hover:text-white"></i>
+                </div>
+              </div>
+              <div class="flex w-32 justify-arround">
+                <div id="mobileFeedLive" class="flex w-50 flex-col justify-center items-center hover:text-yellow">
+                  <i class="fa-solid fa-signal-stream fa-lg text-2xl"></i>
+                  <span class="font-avenir text-sm h-min leading-normal">En vivo</span>
+                </div>
+                <div id="mobileFeedProfile" class="flex w-50 flex-col justify-center items-center hover:text-yellow">
+                  <i class="fa-solid fa-user fa-lg text-2xl"></i>
+                  <span class="font-avenir text-sm h-min leading-normal">Perfil</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="grid h-50 w-full grid-cols-4 sm:grid-cols-5">
-          <div id="feed" class="active-scout__nav hidden scouting-nav__item flex justify-center items-center text-white sm:flex"><span class="h-auto w-auto text-avenir font-semibold">Feed</span></div>
-          <div id="forYou" class="scouting-nav__item flex justify-center items-center text-white"><span class="h-auto w-auto text-avenir font-semibold">Para ti</span></div>
-          <div id="accounts" class="scouting-nav__item flex justify-center items-center text-white"><span class="h-auto w-auto text-avenir font-semibold">Cuentas</span></div>
-          <div id="hashtags" class="scouting-nav__item flex justify-center items-center text-white"><span class="h-auto w-auto text-avenir font-semibold">Hashtags</span></div>
-          <div id="sports" class="scouting-nav__item flex justify-center items-center text-white"><span class="h-auto w-auto text-avenir font-semibold">Deportes</span></div>
-        </div>
-      </div>
-
-      <div id="feedWrapper" class="scouting-content__wrapper h-full overflow-scroll">
-        <div class="flex flex-col h-auto w-full">
-          <div class="h-full w-full">
-            <img src="./images/dominadas.png" class="h-full w-auto" alt="Contenido del reel">
-          </div>
-          <div class="absolute h-10 w-full bottom-0 font-white">
-            <div class="h-auto w-full">
-              <img src="./images/bottom-bar.png" alt="Barra inferior">
-              <div class="absolute bottom-50 translate-y-50 flex w-full justify-between text-2xl text-white">
-                <div class="flex w-32 justify-arround">
-                  <div class="flex w-50 flex-col justify-center items-center">
-                    <i class="fa-solid fa-house fa-lg text-2xl"></i>
-                    <span class="font-avenir text-sm h-min leading-normal">Inicio</span>
-                  </div>
-                  <div class="flex w-50 flex-col justify-center items-center">
-                    <i class="fa-solid fa-magnifying-glass fa-flip-horizontal fa-lg text-2xl"></i>
-                    <span class="font-avenir text-sm h-min leading-normal">Buscar</span>
-                  </div>
-                </div>
-                <div class="absolute left-50 translate-y-[-50%] translate-x-[-50%] flex justify-center w-36">
-                  <div class="flex justify-center items-center h-[60px] w-[60px] rounded-full bg-white">
-                    <i class="fa-solid fa-plus text-black"></i>
-                  </div>
-                </div>
-                <div class="flex w-32 justify-arround">
-                  <div class="flex w-50 flex-col justify-center items-center">
-                    <i class="fa-solid fa-signal-stream fa-lg text-2xl"></i>
-                    <span class="font-avenir text-sm h-min leading-normal">En vivo</span>
-                  </div>
-                  <div class="flex w-50 flex-col justify-center items-center">
-                    <i class="fa-solid fa-user fa-lg text-2xl"></i>
-                    <span class="font-avenir text-sm h-min leading-normal">Perfil</span>
-                  </div>
-                </div>
-              </div>
+  
+        <div id="feedWrapper" class="relative scouting-content__wrapper h-full w-full sm:h-95">
+          <div class="relative flex flex-col h-full w-full max-w-[425px] overflow-y-auto overflow-x-hidden items-center m-auto rounded-2xl sm:max-h-[755.55px]">
+            <div class="flex h-full w-max justify-center">
+              <img src="./images/dominadas.png" class="h-full w-max" alt="Contenido del reel">
             </div>
           </div>
-        </div>
-      </div>
-
-      <div id="forYouWrapper" class="scouting-content__wrapper h-90 overflow-scroll hidden">
-        <div class="grid-container h-auto w-full">
-          <div class="item"><img src="./images/beis1.jpg" alt=""></div>
-          <div class="item"><img src="./images/fut.jpg" alt=""></div>
-          <div class="item item-2x1"><img src="./images/qb.jpg" alt=""></div>
-          <div class="item"><img src="./images/box.jpg" alt=""></div>
-          <div class="item"><img src="./images/bike.jpg" alt=""></div>
-          <div class="item item-2x1"><img src="./images/swimming.jpg" alt=""></div>
-          <div class="item"><img src="./images/beis2.jpg" alt=""></div>
-          <div class="item"><img src="./images/fullcontact.jpg" alt=""></div>
-          <div class="item"><img src="./images/basquet.jpg" alt=""></div>
-          <div class="item item-2x1"><img src="./images/girl-box.jpg" alt=""></div>
-          <div class="item item-2x1"><img src="./images/outpull.jpg" alt=""></div>
-          <div class="item"><img src="./images/tenis.jpg" alt=""></div>
-          <div class="item item-2x1"><img src="./images/surf.jpg" alt=""></div>
-          <div class="item"><img src="./images/hokey.jpg" alt=""></div>
-          <div class="item item-2x1"><img src="./images/premiasion.jpg" alt=""></div>
-          <div class="item item-2x1"><img src="./images/runner.jpg" alt=""></div>
-          <div class="item"><img src="./images/karate.jpg" alt=""></div>
-          <div class="item item-2x1"><img src="./images/basquet2.jpg" alt=""></div> 
-        </div>
-      </div>
-
-      <div id="accountsWrapper" class="scouting-content__wrapper h-90 overflow-scroll hidden">
-        <div class="flex flex-col h-auto w-full">
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="h-80 mr-3 w-[70px]">
-              <div class="h-auto w-max m-auto rounded-full border border-white overflow-hidden">
+  
+          <div class="absolute top-0 w-full h-full max-w-[425px] left-50 translate-x-[-50%] sm:max-h-[755.55px]">
+            <div class="absolute top-2 left-50 translate-x-[-50%] flex mt text-avenir text-white text-xl" js-reel-type>
+              <button id="profesionalRadio" type="radio" class="active outline-0 bg-transparent mr-2 hover:text-letters focus:text-yellow" js-reel-pro>Profesional</button>
+              <span class="text-yellow">|</span>
+              <button id="amateurRadio" type="radio" class="outline-0 bg-transparent ml-2 hover:text-letters focus:text-yellow" js-reel-amateur>Amateur</button>
+            </div>
+    
+            <div class="absolute right-0 bottom-10 sm: w-10 h-80 flex flex-col justify-center items-center mr-3 font-avenir text-white font-2xl text-white sm:bottom-2 sm:left-full sm:ml-3" >
+              <div class="h-[45px] w-[45px] m-auto rounded-full overflow-hidden mb-3">
                 <img class="h-full w-auto m-auto" src="./images/perfil1.png" alt="profile pic">
               </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
-              <span class="text-white">Armando Carrillo</span>
-              <div class="flex text-sm">
-                <span class="text-yellow mr-2">Corredor</span>
-                <span class="text-white font-normal whitespace-nowrap">2000 seguidores</span>
+              <div class="flex flex-col items-center mb-3 hover:text-yellow">
+                <i class="fa-solid fa-thumbs-up fa-2xl mb"></i>
+                <span class="font-avenir text-xs font-bold">1k</span>
               </div>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="h-80 mr-3 w-[70px]">
-              <div class="h-auto w-max m-auto rounded-full border border-white overflow-hidden">
-                <img class="h-full w-auto m-auto" src="./images/perfil2.png" alt="profile pic">
+              <div class="flex flex-col items-center mb-3 hover:text-yellow">
+                <i class="fa-solid fa-comment-lines fa-2xl mb"></i>
+                <span class="font-avenir text-xs font-bold">300</span>
               </div>
+              <i class="fa-solid fa-share fa-2xl mb-5 hover:text-yellow"></i>
+              <i class="fa-solid fa-flag fa-2xl mb-5 hover:text-yellow"></i>
+              <i class="fa-solid fa-bookmark fa-2xl mb-5 hover:text-yellow"></i>
             </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
-              <span class="text-white">Samuel Huerta</span>
-              <div class="flex text-sm">
-                <span class="text-yellow mr-2">Futbolista</span>
-                <span class="text-white font-normal whitespace-nowrap">1900 seguidores</span>
-              </div>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="h-80 mr-3 w-[70px]">
-              <div class="h-auto w-max m-auto rounded-full border border-white overflow-hidden">
-                <img class="h-full w-auto m-auto" src="./images/perfil3.png" alt="profile pic">
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
-              <span class="text-white">Isabella Campos</span>
-              <div class="flex text-sm">
-                <span class="text-yellow mr-2">Gimnasta</span>
-                <span class="text-white font-normal whitespace-nowrap">2740 seguidores</span>
-              </div>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="h-80 mr-3 w-[70px]">
-              <div class="h-auto w-max m-auto rounded-full border border-white overflow-hidden">
-                <img class="h-full w-auto m-auto" src="./images/perfil4.png" alt="profile pic">
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
-              <span class="text-white">Alejandro Camarena</span>
-              <div class="flex text-sm">
-                <span class="text-yellow mr-2">Tenista</span>
-                <span class="text-white font-normal whitespace-nowrap">1330 seguidores</span>
-              </div>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="h-80 mr-3 w-[70px]">
-              <div class="h-auto w-max m-auto rounded-full border border-white overflow-hidden">
-                <img class="h-full w-auto m-auto" src="./images/perfil5.png" alt="profile pic">
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
-              <span class="text-white">Christian Gonzáles</span>
-              <div class="flex text-sm">
-                <span class="text-yellow mr-2">Beisbolista</span>
-                <span class="text-white font-normal whitespace-nowrap">1560 seguidores</span>
-              </div>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="h-80 mr-3 w-[70px]">
-              <div class="h-auto w-max m-auto rounded-full border border-white overflow-hidden">
-                <img class="h-full w-auto m-auto" src="./images/perfil6.png" alt="profile pic">
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
-              <span class="text-white">Paulina Sánchez</span>
-              <div class="flex text-sm">
-                <span class="text-yellow mr-2">Corredora</span>
-                <span class="text-white font-normal whitespace-nowrap">1999 seguidores</span>
-              </div>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="h-80 mr-3 w-[70px]">
-              <div class="h-auto w-max m-auto rounded-full border border-white overflow-hidden">
-                <img class="h-full w-auto m-auto" src="./images/perfil7.png" alt="profile pic">
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
-              <span class="text-white">Irma Cruz</span>
-              <div class="flex text-sm">
-                <span class="text-yellow mr-2">Básquetbolista</span>
-                <span class="text-white font-normal whitespace-nowrap">1849 seguidores</span>
-              </div>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="h-80 mr-3 w-[70px]">
-              <div class="h-auto w-max m-auto rounded-full border border-white overflow-hidden">
-                <img class="h-full w-auto m-auto" src="./images/perfil8.png" alt="profile pic">
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
-              <span class="text-white">Raquel Olivares</span>
-              <div class="flex text-sm">
-                <span class="text-yellow mr-2">Boxeador</span>
-                <span class="text-white font-normal whitespace-nowrap">990 seguidores</span>
-              </div>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="h-80 mr-3 w-[70px]">
-              <div class="h-auto w-max m-auto rounded-full border border-white overflow-hidden">
-                <img class="h-full w-auto m-auto" src="./images/perfil1.png" alt="profile pic">
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
-              <span class="text-white">Armando Carrillo</span>
-              <div class="flex text-sm">
-                <span class="text-yellow mr-2">Corredor</span>
-                <span class="text-white font-normal whitespace-nowrap">2000 seguidores</span>
-              </div>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="h-80 mr-3 w-[70px]">
-              <div class="h-auto w-max m-auto rounded-full border border-white overflow-hidden">
-                <img class="h-full w-auto m-auto" src="./images/perfil2.png" alt="profile pic">
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
-              <span class="text-white">Samuel Huerta</span>
-              <div class="flex text-sm">
-                <span class="text-yellow mr-2">Futbolista</span>
-                <span class="text-white font-normal whitespace-nowrap">1900 seguidores</span>
-              </div>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="h-80 mr-3 w-[70px]">
-              <div class="h-auto w-max m-auto rounded-full border border-white overflow-hidden">
-                <img class="h-full w-auto m-auto" src="./images/perfil3.png" alt="profile pic">
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
-              <span class="text-white">Isabella Campos</span>
-              <div class="flex text-sm">
-                <span class="text-yellow mr-2">Gimnasta</span>
-                <span class="text-white font-normal whitespace-nowrap">2740 seguidores</span>
-              </div>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="h-80 mr-3 w-[70px]">
-              <div class="h-auto w-max m-auto rounded-full border border-white overflow-hidden">
-                <img class="h-full w-auto m-auto" src="./images/perfil4.png" alt="profile pic">
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
-              <span class="text-white">Alejandro Camarena</span>
-              <div class="flex text-sm">
-                <span class="text-yellow mr-2">Tenista</span>
-                <span class="text-white font-normal whitespace-nowrap">1330 seguidores</span>
-              </div>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="h-80 mr-3 w-[70px]">
-              <div class="h-auto w-max m-auto rounded-full border border-white overflow-hidden">
-                <img class="h-full w-auto m-auto" src="./images/perfil5.png" alt="profile pic">
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
-              <span class="text-white">Christian Gonzáles</span>
-              <div class="flex text-sm">
-                <span class="text-yellow mr-2">Beisbolista</span>
-                <span class="text-white font-normal whitespace-nowrap">1560 seguidores</span>
-              </div>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="h-80 mr-3 w-[70px]">
-              <div class="h-auto w-max m-auto rounded-full border border-white overflow-hidden">
-                <img class="h-full w-auto m-auto" src="./images/perfil6.png" alt="profile pic">
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
-              <span class="text-white">Paulina Sánchez</span>
-              <div class="flex text-sm">
-                <span class="text-yellow mr-2">Corredora</span>
-                <span class="text-white font-normal whitespace-nowrap">1999 seguidores</span>
-              </div>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="h-80 mr-3 w-[70px]">
-              <div class="h-auto w-max m-auto rounded-full border border-white overflow-hidden">
-                <img class="h-full w-auto m-auto" src="./images/perfil7.png" alt="profile pic">
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
-              <span class="text-white">Irma Cruz</span>
-              <div class="flex text-sm">
-                <span class="text-yellow mr-2">Básquetbolista</span>
-                <span class="text-white font-normal whitespace-nowrap">1849 seguidores</span>
-              </div>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="h-80 mr-3 w-[70px]">
-              <div class="h-auto w-max m-auto rounded-full border border-white overflow-hidden">
-                <img class="h-full w-auto m-auto" src="./images/perfil8.png" alt="profile pic">
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
-              <span class="text-white">Raquel Olivares</span>
-              <div class="flex text-sm">
-                <span class="text-yellow mr-2">Boxeador</span>
-                <span class="text-white font-normal whitespace-nowrap">990 seguidores</span>
-              </div>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
+  
+            <div class="absolute bottom-10 left-0 ml-3 mb-3 font-avenir text-white sm:bottom-2" js-reel-description>
+              <h3 class="font-base mb-3">Armando Carrillo</h3>
+              <span class="font-sm mb-3">
+                Práctica de fútbol <br>
+                #fut #entrenamiento
+              </span>
             </div>
           </div>
         </div>
-      </div>
-
-      <div id="hashtagsWrapper" class="scouting-content__wrapper h-90 overflow-scroll hidden">
-        <div class="flex flex-col h-auto w-full">
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full border border-yellow overflow-hidden">
-                <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
-              <span class="text-white">#chilena</span>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <span class="text-yellow font-semibold whitespace-nowrap">500k publicaciones</span>
-            </div>
+  
+        <div id="forYouWrapper" class="hidden scouting-content__wrapper h-90 overflow-y-scroll sm:h-95">
+          <div class="grid-container h-auto w-full">
+            <div class="item"><img src="./images/beis1.jpg" alt=""></div>
+            <div class="item"><img src="./images/fut.jpg" alt=""></div>
+            <div class="item item-2x1"><img src="./images/qb.jpg" alt=""></div>
+            <div class="item"><img src="./images/box.jpg" alt=""></div>
+            <div class="item"><img src="./images/bike.jpg" alt=""></div>
+            <div class="item item-2x1"><img src="./images/swimming.jpg" alt=""></div>
+            <div class="item"><img src="./images/beis2.jpg" alt=""></div>
+            <div class="item"><img src="./images/fullcontact.jpg" alt=""></div>
+            <div class="item"><img src="./images/basquet.jpg" alt=""></div>
+            <div class="item item-2x1"><img src="./images/girl-box.jpg" alt=""></div>
+            <div class="item item-2x1"><img src="./images/outpull.jpg" alt=""></div>
+            <div class="item"><img src="./images/tenis.jpg" alt=""></div>
+            <div class="item item-2x1"><img src="./images/surf.jpg" alt=""></div>
+            <div class="item"><img src="./images/hokey.jpg" alt=""></div>
+            <div class="item item-2x1"><img src="./images/premiasion.jpg" alt=""></div>
+            <div class="item item-2x1"><img src="./images/runner.jpg" alt=""></div>
+            <div class="item"><img src="./images/karate.jpg" alt=""></div>
+            <div class="item item-2x1"><img src="./images/basquet2.jpg" alt=""></div> 
           </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full border border-yellow overflow-hidden">
-                <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
-              <span class="text-white">#goldemediacancha</span>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <span class="text-yellow font-semibold whitespace-nowrap">100k publicaciones</span>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full border border-yellow overflow-hidden">
-                <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
-              <span class="text-white">#encestadas</span>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <span class="text-yellow font-semibold whitespace-nowrap">1000k publicaciones</span>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full border border-yellow overflow-hidden">
-                <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
-              <span class="text-white">#clavadoolimpico</span>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <span class="text-yellow font-semibold whitespace-nowrap">50k publicaciones</span>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full border border-yellow overflow-hidden">
-                <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
-              <span class="text-white">#touchdown</span>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <span class="text-yellow font-semibold whitespace-nowrap">700k publicaciones</span>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full border border-yellow overflow-hidden">
-                <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
-              <span class="text-white">#homerun</span>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <span class="text-yellow font-semibold whitespace-nowrap">100k publicaciones</span>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full border border-yellow overflow-hidden">
-                <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
-              <span class="text-white">#tiroalblanco</span>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <span class="text-yellow font-semibold whitespace-nowrap">20k publicaciones</span>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full border border-yellow overflow-hidden">
-                <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
-              <span class="text-white">#canastaultimosegundo</span>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <span class="text-yellow font-semibold whitespace-nowrap">300 publicaciones</span>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full border border-yellow overflow-hidden">
-                <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
-              <span class="text-white">#atajada</span>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <span class="text-yellow font-semibold whitespace-nowrap">400k publicaciones</span>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full border border-yellow overflow-hidden">
-                <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
-              <span class="text-white">#chilena</span>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <span class="text-yellow font-semibold whitespace-nowrap">500k publicaciones</span>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full border border-yellow overflow-hidden">
-                <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
-              <span class="text-white">#goldemediacancha</span>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <span class="text-yellow font-semibold whitespace-nowrap">100k publicaciones</span>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full border border-yellow overflow-hidden">
-                <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
-              <span class="text-white">#encestadas</span>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <span class="text-yellow font-semibold whitespace-nowrap">1000k publicaciones</span>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full border border-yellow overflow-hidden">
-                <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
-              <span class="text-white">#clavadoolimpico</span>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <span class="text-yellow font-semibold whitespace-nowrap">50k publicaciones</span>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full border border-yellow overflow-hidden">
-                <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
-              <span class="text-white">#touchdown</span>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <span class="text-yellow font-semibold whitespace-nowrap">700k publicaciones</span>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full border border-yellow overflow-hidden">
-                <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
-              <span class="text-white">#homerun</span>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <span class="text-yellow font-semibold whitespace-nowrap">100k publicaciones</span>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full border border-yellow overflow-hidden">
-                <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
-              <span class="text-white">#tiroalblanco</span>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <span class="text-yellow font-semibold whitespace-nowrap">20k publicaciones</span>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full border border-yellow overflow-hidden">
-                <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
-              <span class="text-white">#canastaultimosegundo</span>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <span class="text-yellow font-semibold whitespace-nowrap">300 publicaciones</span>
-            </div>
-          </div>
-
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full border border-yellow overflow-hidden">
-                <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
-              </div>
-            </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
-              <span class="text-white">#atajada</span>
-            </div>
-            <div class="flex h-90 w-auto justify-center items-center">
-              <span class="text-yellow font-semibold whitespace-nowrap">400k publicaciones</span>
-            </div>
-          </div>
-
         </div>
-      </div>
-
-      <div id="sportsWrapper" class="scouting-content__wrapper h-90 overflow-scroll hidden">
-        <div class="flex flex-col h-auto w-full md:grid grid-cols-3">
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
-                <i class="fa-sharp fa-solid fa-basketball fa-lg text-[1.8em] md:text-[2.8em]"></i>
+  
+        <div id="accountsWrapper" class="hidden scouting-content__wrapper h-90 overflow-y-scroll sm:h-95">
+          <div class="flex flex-col h-auto w-full">
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil1.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Armando Carrillo</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Corredor</span>
+                  <span class="text-white font-normal whitespace-nowrap">2000 seguidores</span>
+                </div>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
               </div>
             </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
-              <span class="text-white font-druk text-base md:text-center">BASQUETBOL</span>
-            </div>
-          </div>
-          
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
-                <i class="fa-solid fa-boxing-glove fa-lg text-[1.8em] md:text-[2.8em]"></i>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil2.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Samuel Huerta</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Futbolista</span>
+                  <span class="text-white font-normal whitespace-nowrap">1900 seguidores</span>
+                </div>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
               </div>
             </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
-              <span class="text-white font-druk text-base md:text-center">BOX</span>
-            </div>
-          </div>
-          
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
-                <i class="fa-solid fa-futbol fa-lg text-[1.8em] md:text-[2.8em]"></i>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil3.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Isabella Campos</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Gimnasta</span>
+                  <span class="text-white font-normal whitespace-nowrap">2740 seguidores</span>
+                </div>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
               </div>
             </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
-              <span class="text-white font-druk text-base md:text-center">FÚTBOL SOCCER</span>
-            </div>
-          </div>
-          
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
-                <i class="fa-solid fa-baseball fa-lg text-[1.8em] md:text-[2.8em]"></i>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil4.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Alejandro Camarena</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Tenista</span>
+                  <span class="text-white font-normal whitespace-nowrap">1330 seguidores</span>
+                </div>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
               </div>
             </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
-              <span class="text-white font-druk text-base md:text-center">BEISBOL</span>
-            </div>
-          </div>
-          
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
-                <i class="fa-solid fa-sportsball fa-lg text-[1.8em] md:text-[2.8em]"></i>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil5.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Christian Gonzáles</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Beisbolista</span>
+                  <span class="text-white font-normal whitespace-nowrap">1560 seguidores</span>
+                </div>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
               </div>
             </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
-              <span class="text-white font-druk text-base md:text-center">FÚTBOL AMERICANO</span>
-            </div>
-          </div>
-          
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
-                <i class="fa-solid fa-volleyball fa-lg text-[1.8em] md:text-[2.8em]"></i>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil6.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Paulina Sánchez</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Corredora</span>
+                  <span class="text-white font-normal whitespace-nowrap">1999 seguidores</span>
+                </div>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
               </div>
             </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
-              <span class="text-white font-druk text-base md:text-center">VOLEIBOL</span>
-            </div>
-          </div>
-          
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
-                <i class="fa-solid fa-motorcycle fa-lg text-[1.8em] md:text-[2.8em]"></i>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil7.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Irma Cruz</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Básquetbolista</span>
+                  <span class="text-white font-normal whitespace-nowrap">1849 seguidores</span>
+                </div>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
               </div>
             </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
-              <span class="text-white font-druk text-base md:text-center">MOTOCROSS</span>
-            </div>
-          </div>
-          
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
-                <i class="fa-solid fa-hockey-puck fa-lg text-[1.8em] md:text-[2.8em]"></i>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil8.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Raquel Olivares</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Boxeador</span>
+                  <span class="text-white font-normal whitespace-nowrap">990 seguidores</span>
+                </div>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
               </div>
             </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
-              <span class="text-white font-druk text-base md:text-center">HOKEY</span>
-            </div>
-          </div>
-          
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
-                <i class="fa-solid fa-shuttlecock fa-lg text-[1.8em] md:text-[2.8em]"></i>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil1.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Armando Carrillo</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Corredor</span>
+                  <span class="text-white font-normal whitespace-nowrap">2000 seguidores</span>
+                </div>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
               </div>
             </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
-              <span class="text-white font-druk text-base md:text-center">PONGALLO</span>
-            </div>
-          </div>
-          
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
-                <i class="fa-solid fa-table-tennis-paddle-ball fa-lg text-[1.8em] md:text-[2.8em]"></i>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil2.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Samuel Huerta</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Futbolista</span>
+                  <span class="text-white font-normal whitespace-nowrap">1900 seguidores</span>
+                </div>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
               </div>
             </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
-              <span class="text-white font-druk text-base md:text-center">PIN-PON</span>
-            </div>
-          </div>
-          
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
-                <i class="fa-solid fa-rugby-ball fa-lg text-[1.8em] md:text-[2.8em]"></i>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil3.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Isabella Campos</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Gimnasta</span>
+                  <span class="text-white font-normal whitespace-nowrap">2740 seguidores</span>
+                </div>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
               </div>
             </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
-              <span class="text-white font-druk text-base md:text-center">RUGBY</span>
-            </div>
-          </div>
-          
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
-                <i class="fa-solid fa-person-swimming fa-lg text-[1.8em] md:text-[2.8em]"></i>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil4.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Alejandro Camarena</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Tenista</span>
+                  <span class="text-white font-normal whitespace-nowrap">1330 seguidores</span>
+                </div>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
               </div>
             </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
-              <span class="text-white font-druk text-base md:text-center">NATACIÓN</span>
-            </div>
-          </div>
-          
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
-                <i class="fa-solid fa-person-ski-jumping fa-lg text-[1.8em] md:text-[2.8em]"></i>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil5.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Christian Gonzáles</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Beisbolista</span>
+                  <span class="text-white font-normal whitespace-nowrap">1560 seguidores</span>
+                </div>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
               </div>
             </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
-              <span class="text-white font-druk text-base md:text-center">SALTO DE SKI</span>
-            </div>
-          </div>
-          
-          <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
-            <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
-              <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
-                <i class="fa-solid fa-person-skating fa-lg text-[1.8em] md:text-[2.8em]"></i>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil6.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Paulina Sánchez</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Corredora</span>
+                  <span class="text-white font-normal whitespace-nowrap">1999 seguidores</span>
+                </div>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
               </div>
             </div>
-            <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
-              <span class="text-white font-druk text-base md:text-center">PATINAJE ARTÍSTICO</span>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil7.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Irma Cruz</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Básquetbolista</span>
+                  <span class="text-white font-normal whitespace-nowrap">1849 seguidores</span>
+                </div>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
+              </div>
+            </div>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil8.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Raquel Olivares</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Boxeador</span>
+                  <span class="text-white font-normal whitespace-nowrap">990 seguidores</span>
+                </div>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <button class="h-auto w-auto rounded-full bg-yellow text-black text-avenir font-bold px-5 py">Seguir</button>
+              </div>
             </div>
           </div>
         </div>
+  
+        <div id="hashtagsWrapper" class="hidden scouting-content__wrapper h-90 overflow-y-scroll sm:h-95">
+          <div class="flex flex-col h-auto w-full">
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
+                <div class="flex justify-center items-center  h-[50px] w-[50px] rounded-full border border-yellow overflow-hidden">
+                  <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
+                <span class="text-white">#chilena</span>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <span class="text-yellow font-semibold whitespace-nowrap">500k publicaciones</span>
+              </div>
+            </div>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
+                <div class="flex justify-center items-center  h-[50px] w-[50px] rounded-full border border-yellow overflow-hidden">
+                  <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
+                <span class="text-white">#goldemediacancha</span>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <span class="text-yellow font-semibold whitespace-nowrap">100k publicaciones</span>
+              </div>
+            </div>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
+                <div class="flex justify-center items-center  h-[50px] w-[50px] rounded-full border border-yellow overflow-hidden">
+                  <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
+                <span class="text-white">#encestadas</span>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <span class="text-yellow font-semibold whitespace-nowrap">1000k publicaciones</span>
+              </div>
+            </div>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
+                <div class="flex justify-center items-center  h-[50px] w-[50px] rounded-full border border-yellow overflow-hidden">
+                  <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
+                <span class="text-white">#clavadoolimpico</span>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <span class="text-yellow font-semibold whitespace-nowrap">50k publicaciones</span>
+              </div>
+            </div>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
+                <div class="flex justify-center items-center  h-[50px] w-[50px] rounded-full border border-yellow overflow-hidden">
+                  <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
+                <span class="text-white">#touchdown</span>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <span class="text-yellow font-semibold whitespace-nowrap">700k publicaciones</span>
+              </div>
+            </div>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
+                <div class="flex justify-center items-center  h-[50px] w-[50px] rounded-full border border-yellow overflow-hidden">
+                  <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
+                <span class="text-white">#homerun</span>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <span class="text-yellow font-semibold whitespace-nowrap">100k publicaciones</span>
+              </div>
+            </div>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
+                <div class="flex justify-center items-center  h-[50px] w-[50px] rounded-full border border-yellow overflow-hidden">
+                  <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
+                <span class="text-white">#tiroalblanco</span>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <span class="text-yellow font-semibold whitespace-nowrap">20k publicaciones</span>
+              </div>
+            </div>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
+                <div class="flex justify-center items-center  h-[50px] w-[50px] rounded-full border border-yellow overflow-hidden">
+                  <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
+                <span class="text-white">#canastaultimosegundo</span>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <span class="text-yellow font-semibold whitespace-nowrap">300 publicaciones</span>
+              </div>
+            </div>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
+                <div class="flex justify-center items-center  h-[50px] w-[50px] rounded-full border border-yellow overflow-hidden">
+                  <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
+                <span class="text-white">#atajada</span>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <span class="text-yellow font-semibold whitespace-nowrap">400k publicaciones</span>
+              </div>
+            </div>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
+                <div class="flex justify-center items-center  h-[50px] w-[50px] rounded-full border border-yellow overflow-hidden">
+                  <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
+                <span class="text-white">#chilena</span>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <span class="text-yellow font-semibold whitespace-nowrap">500k publicaciones</span>
+              </div>
+            </div>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
+                <div class="flex justify-center items-center  h-[50px] w-[50px] rounded-full border border-yellow overflow-hidden">
+                  <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
+                <span class="text-white">#goldemediacancha</span>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <span class="text-yellow font-semibold whitespace-nowrap">100k publicaciones</span>
+              </div>
+            </div>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
+                <div class="flex justify-center items-center  h-[50px] w-[50px] rounded-full border border-yellow overflow-hidden">
+                  <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
+                <span class="text-white">#encestadas</span>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <span class="text-yellow font-semibold whitespace-nowrap">1000k publicaciones</span>
+              </div>
+            </div>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
+                <div class="flex justify-center items-center  h-[50px] w-[50px] rounded-full border border-yellow overflow-hidden">
+                  <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
+                <span class="text-white">#clavadoolimpico</span>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <span class="text-yellow font-semibold whitespace-nowrap">50k publicaciones</span>
+              </div>
+            </div>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
+                <div class="flex justify-center items-center  h-[50px] w-[50px] rounded-full border border-yellow overflow-hidden">
+                  <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
+                <span class="text-white">#touchdown</span>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <span class="text-yellow font-semibold whitespace-nowrap">700k publicaciones</span>
+              </div>
+            </div>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
+                <div class="flex justify-center items-center  h-[50px] w-[50px] rounded-full border border-yellow overflow-hidden">
+                  <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
+                <span class="text-white">#homerun</span>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <span class="text-yellow font-semibold whitespace-nowrap">100k publicaciones</span>
+              </div>
+            </div>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
+                <div class="flex justify-center items-center  h-[50px] w-[50px] rounded-full border border-yellow overflow-hidden">
+                  <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
+                <span class="text-white">#tiroalblanco</span>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <span class="text-yellow font-semibold whitespace-nowrap">20k publicaciones</span>
+              </div>
+            </div>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
+                <div class="flex justify-center items-center  h-[50px] w-[50px] rounded-full border border-yellow overflow-hidden">
+                  <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
+                <span class="text-white">#canastaultimosegundo</span>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <span class="text-yellow font-semibold whitespace-nowrap">300 publicaciones</span>
+              </div>
+            </div>
+  
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto">
+                <div class="flex justify-center items-center  h-[50px] w-[50px] rounded-full border border-yellow overflow-hidden">
+                  <i class="fa-solid fa-hashtag fa-2xl text-[2em] text-white "></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir">
+                <span class="text-white">#atajada</span>
+              </div>
+              <div class="flex h-90 w-auto justify-center items-center">
+                <span class="text-yellow font-semibold whitespace-nowrap">400k publicaciones</span>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+  
+        <div id="sportsWrapper" class="hidden scouting-content__wrapper h-90 overflow-y-scroll sm:h-95">
+          <div class="flex flex-col h-auto w-full md:grid grid-cols-3">
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
+                <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
+                  <i class="fa-sharp fa-solid fa-basketball fa-lg text-[1.8em] md:text-[2.8em]"></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
+                <span class="text-white font-druk text-base md:text-center">BASQUETBOL</span>
+              </div>
+            </div>
+            
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
+                <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
+                  <i class="fa-solid fa-boxing-glove fa-lg text-[1.8em] md:text-[2.8em]"></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
+                <span class="text-white font-druk text-base md:text-center">BOX</span>
+              </div>
+            </div>
+            
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
+                <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
+                  <i class="fa-solid fa-futbol fa-lg text-[1.8em] md:text-[2.8em]"></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
+                <span class="text-white font-druk text-base md:text-center">FÚTBOL SOCCER</span>
+              </div>
+            </div>
+            
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
+                <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
+                  <i class="fa-solid fa-baseball fa-lg text-[1.8em] md:text-[2.8em]"></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
+                <span class="text-white font-druk text-base md:text-center">BEISBOL</span>
+              </div>
+            </div>
+            
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
+                <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
+                  <i class="fa-solid fa-sportsball fa-lg text-[1.8em] md:text-[2.8em]"></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
+                <span class="text-white font-druk text-base md:text-center">FÚTBOL AMERICANO</span>
+              </div>
+            </div>
+            
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
+                <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
+                  <i class="fa-solid fa-volleyball fa-lg text-[1.8em] md:text-[2.8em]"></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
+                <span class="text-white font-druk text-base md:text-center">VOLEIBOL</span>
+              </div>
+            </div>
+            
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
+                <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
+                  <i class="fa-solid fa-motorcycle fa-lg text-[1.8em] md:text-[2.8em]"></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
+                <span class="text-white font-druk text-base md:text-center">MOTOCROSS</span>
+              </div>
+            </div>
+            
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
+                <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
+                  <i class="fa-solid fa-hockey-puck fa-lg text-[1.8em] md:text-[2.8em]"></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
+                <span class="text-white font-druk text-base md:text-center">HOKEY</span>
+              </div>
+            </div>
+            
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
+                <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
+                  <i class="fa-solid fa-shuttlecock fa-lg text-[1.8em] md:text-[2.8em]"></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
+                <span class="text-white font-druk text-base md:text-center">PONGALLO</span>
+              </div>
+            </div>
+            
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
+                <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
+                  <i class="fa-solid fa-table-tennis-paddle-ball fa-lg text-[1.8em] md:text-[2.8em]"></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
+                <span class="text-white font-druk text-base md:text-center">PIN-PON</span>
+              </div>
+            </div>
+            
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
+                <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
+                  <i class="fa-solid fa-rugby-ball fa-lg text-[1.8em] md:text-[2.8em]"></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
+                <span class="text-white font-druk text-base md:text-center">RUGBY</span>
+              </div>
+            </div>
+            
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
+                <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
+                  <i class="fa-solid fa-person-swimming fa-lg text-[1.8em] md:text-[2.8em]"></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
+                <span class="text-white font-druk text-base md:text-center">NATACIÓN</span>
+              </div>
+            </div>
+            
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
+                <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
+                  <i class="fa-solid fa-person-ski-jumping fa-lg text-[1.8em] md:text-[2.8em]"></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
+                <span class="text-white font-druk text-base md:text-center">SALTO DE SKI</span>
+              </div>
+            </div>
+            
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 md:flex-col md:justify-center md:w-auto md:h-[200px]">
+              <div class="flex items-center h-80 mr-3 w-[70px] m-auto md:m-auto md:w-[140px] md:mt-3">
+                <div class="flex justify-center items-center h-[50px] w-[50px] m-auto rounded-full bg-yellow overflow-hidden md:h-[100px] md:w-[100px]">
+                  <i class="fa-solid fa-person-skating fa-lg text-[1.8em] md:text-[2.8em]"></i>
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-semibold text-avenir md:items-center">
+                <span class="text-white font-druk text-base md:text-center">PATINAJE ARTÍSTICO</span>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </section>
+
+      <div class="hidden h-full w-90 lg:flex flex-col items-center justify-around m-auto">
+
+        <div class="flex h-10 items-center justify-center">
+          <div class="flex w-20 text-white">
+            <i class="fa-solid fa-user-check fa-lg text-2xl m-auto"></i>
+          </div>
+          <sapn class="text-xs font-druk text-white w-80 m-auto">CUENTAS QUE SIGUES</span>
+        </div>
+
+        <div class="h-90 overflow-auto">
+          <div class="flex flex-col h-auto w-auto">
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil1.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Armando Carrillo</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Corredor</span>
+                  <span class="text-white font-normal whitespace-nowrap">2000 seguidores</span>
+                </div>
+              </div>
+            </div>
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil2.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Samuel Huerta</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Futbolista</span>
+                  <span class="text-white font-normal whitespace-nowrap">1900 seguidores</span>
+                </div>
+              </div>
+            </div>
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil3.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Isabella Campos</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Gimnasta</span>
+                  <span class="text-white font-normal whitespace-nowrap">2740 seguidores</span>
+                </div>
+              </div>
+            </div>
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil4.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Alejandro Camarena</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Tenista</span>
+                  <span class="text-white font-normal whitespace-nowrap">1330 seguidores</span>
+                </div>
+              </div>
+            </div>
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil5.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Christian Gonzáles</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Beisbolista</span>
+                  <span class="text-white font-normal whitespace-nowrap">1560 seguidores</span>
+                </div>
+              </div>
+            </div>
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil6.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Paulina Sánchez</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Corredora</span>
+                  <span class="text-white font-normal whitespace-nowrap">1999 seguidores</span>
+                </div>
+              </div>
+            </div>
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil7.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Irma Cruz</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Básquetbolista</span>
+                  <span class="text-white font-normal whitespace-nowrap">1849 seguidores</span>
+                </div>
+              </div>
+            </div>
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil8.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Raquel Olivares</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Boxeador</span>
+                  <span class="text-white font-normal whitespace-nowrap">990 seguidores</span>
+                </div>
+              </div>
+            </div>
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil1.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Armando Carrillo</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Corredor</span>
+                  <span class="text-white font-normal whitespace-nowrap">2000 seguidores</span>
+                </div>
+              </div>
+            </div>
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil2.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Samuel Huerta</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Futbolista</span>
+                  <span class="text-white font-normal whitespace-nowrap">1900 seguidores</span>
+                </div>
+              </div>
+            </div>
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil3.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Isabella Campos</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Gimnasta</span>
+                  <span class="text-white font-normal whitespace-nowrap">2740 seguidores</span>
+                </div>
+              </div>
+            </div>
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil4.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Alejandro Camarena</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Tenista</span>
+                  <span class="text-white font-normal whitespace-nowrap">1330 seguidores</span>
+                </div>
+              </div>
+            </div>
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil5.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Christian Gonzáles</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Beisbolista</span>
+                  <span class="text-white font-normal whitespace-nowrap">1560 seguidores</span>
+                </div>
+              </div>
+            </div>
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil6.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Paulina Sánchez</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Corredora</span>
+                  <span class="text-white font-normal whitespace-nowrap">1999 seguidores</span>
+                </div>
+              </div>
+            </div>
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil7.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Irma Cruz</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Básquetbolista</span>
+                  <span class="text-white font-normal whitespace-nowrap">1849 seguidores</span>
+                </div>
+              </div>
+            </div>
+            <div class="hover:bg-arenaGray flex h-[80px] w-full justify-between items-center px-3 mb-3">
+              <div class="h-80 mr-3 w-[70px]">
+                <div class="h-auto w-max m-auto rounded-full overflow-hidden">
+                  <img class="h-full w-auto m-auto" src="./images/perfil8.png" alt="profile pic">
+                </div>
+              </div>
+              <div class="flex flex-col h-90 w-full justify-center items-start font-bold text-avenir">
+                <span class="text-white">Raquel Olivares</span>
+                <div class="flex flex-col text-sm">
+                  <span class="text-yellow mr-2">Boxeador</span>
+                  <span class="text-white font-normal whitespace-nowrap">990 seguidores</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-    </section>
+    </div>
+
   </main>
+
   <script>
+    let isMobile = window.innerWidth <= 640
+    console.log(isMobile)
+    console.log(window.innerWidth)
+
+    /* Sidebar actions and variables */
     let mainContainer = document.querySelector('#mainContainer')
     document.onclick = (e) => handleMainContainer(e)
 
@@ -1098,9 +1521,6 @@
     let closeProfileBtn = document.querySelectorAll('.closeEdit')
     closeProfileBtn.forEach(btn => btn.onclick = (e) => toggleEdit(e))
 
-    let scoutingNav = document.querySelectorAll('.scouting-nav__item')
-    scoutingNav.forEach(nav => nav.onclick = (e) => scoutingNavigation(e))
-
     const handleMainContainer = (e) => {
       e.preventDefault()
       e.stopPropagation()
@@ -1114,16 +1534,13 @@
         userOptions.classList.remove('showRight');
       }
     }
-
     const handleSidebar = (e) => {
-
       let sidebarMenu = document.querySelector('#sidebarMenu');
       sidebarMenu?.classList.add('show')
     }
     
     const openUserOps = (e) => {
       let screenWidth = window.outerWidth
-      console.log(e)
       
       if(screenWidth <= 768){
         let userOptions = document.querySelector('#userOptionsMobile')
@@ -1139,6 +1556,64 @@
       let editScreen = document.querySelector('#editProfile')
       editScreen.classList.contains('showRight') ? editScreen.classList.remove('showRight') : editScreen.classList.add('showRight')
     }
+    /* Sidebar actions and variables */
+
+
+    /* Scouting actions and variables */
+    let profesionalRadio = document.querySelector('#profesionalRadio')
+    let amateurRadio = document.querySelector('#amateurRadio')
+
+    profesionalRadio.onclick = (e) => {
+      profesionalRadio.classList.add('active')
+      amateurRadio.classList.remove('active')
+    }
+    amateurRadio.onclick = (e) => {
+      profesionalRadio.classList.remove('active')
+      amateurRadio.classList.add('active')
+    }
+
+    let mainHeader = document.getElementById('mainHeader')
+    let forYouWrapper = document.getElementById('forYouWrapper')
+    let accountsWrapper = document.getElementById('accountsWrapper')
+    let hashtagsWrapper = document.getElementById('hashtagsWrapper')
+    let sportsWrapper = document.getElementById('sportsWrapper')
+
+    let scoutingBack = document.getElementById('scoutingBack')
+    scoutingBack.onclick = (e) => handleHideNav(e)
+    
+    let scoutingNav = document.querySelectorAll('.scouting-nav__item')
+    scoutingNav.forEach(nav => nav.onclick = (e) => scoutingNavigation(e))
+
+    let scountingContent = document.querySelectorAll('.scouting-content__wrapper')
+
+    /* Start Mobile actions */
+    let feedNavigation = document.getElementById('feedNavigation')
+    let feedMenu = document.getElementById('feedMenu')
+    let feedWrapper = document.getElementById('feedWrapper')
+
+    let mobileSearch = document.getElementById('mobileFeedSearch')
+    mobileSearch.onclick = (e) => handleMobileSearch()
+    /* End */
+
+    const handleMobileSearch = (e) => {
+      feedMenu.classList.add('hidden')
+      feedWrapper.classList.add('hidden')
+      feedNavigation.classList.remove('hidden')
+      let activeNav = Array.from(scoutingNav).find(nav => nav.classList.contains('active-scout__nav') ? true : false)
+      console.log(activeNav)
+      if(activeNav === undefined){
+        scoutingNav[1].click()
+      }else{
+        activeNav.click()
+      }
+    }
+    const handleHideNav = (e) => {
+      console.log(e)
+      feedMenu.classList.remove('hidden')
+      feedWrapper.classList.remove('hidden')
+      feedNavigation.classList.add('hidden')
+      scountingContent.forEach((content, i) => i !== 0 ? content.classList.add('hidden') : '')
+    }
 
     const scoutingNavigation = (e) => {
       console.log(e)
@@ -1146,23 +1621,27 @@
       scoutingNav.forEach(nav => nav.classList.remove('active-scout__nav'))
       target.classList.add('active-scout__nav')
 
-      let scountingContent = document.querySelectorAll('.scouting-content__wrapper')
       scountingContent.forEach(content => content.classList.add('hidden'))
 
-      if(target.id === 'forYou'){
-        let content = document.getElementById('forYouWrapper')
-        content.classList.remove('hidden')
+      if(target.id === 'feed'){
+        feedWrapper.classList.remove('hidden')
+      }else if(target.id === 'forYou'){
+        forYouWrapper.classList.remove('hidden')
       }else if(target.id === 'accounts'){
-        let content = document.getElementById('accountsWrapper')
-        content.classList.remove('hidden')
+        accountsWrapper.classList.remove('hidden')
       }else if(target.id === 'hashtags'){
-        let content = document.getElementById('hashtagsWrapper')
-        content.classList.remove('hidden')
+        hashtagsWrapper.classList.remove('hidden')
       }else if(target.id === 'sports'){
-        let content = document.getElementById('sportsWrapper')
-        content.classList.remove('hidden')
+        sportsWrapper.classList.remove('hidden')
       }
     }
+    /* Scouting actions and variables */
+
+
+    window.onload = (e) => {
+      !isMobile ? scoutingNav[0].click() : ''
+    }
   </script>
+
 </body>
 </html>

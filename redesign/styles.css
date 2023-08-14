@@ -151,3 +151,37 @@ ul.dashed > li:before {
   border-bottom: solid 2px #c9950d;
   color: #c9950d!important;
 }
+
+@media screen and (min-width: 1024px) {
+  #scoutingFull{
+    display: grid;
+    grid-template-columns: minmax(auto, 300px) 768px;
+    grid-template-rows: 100%;
+    justify-content: space-around;
+  }
+}
+@media screen and (min-width: 1280px) {
+  #scoutingFull{
+    display: grid;
+    grid-template-columns: minmax(auto, 300px) 768px minmax(auto, 300px);
+    grid-template-rows: 100%;
+    justify-content: space-around;
+  }
+}
+@media screen and (min-width: 1280px) {
+  #scoutingFull{
+    display: grid;
+    grid-template-columns: minmax(auto, 300px) 768px minmax(auto, 300px);
+    grid-template-rows: 100%;
+    justify-content: space-around;
+  }
+}
+@media screen and (min-width: 1536px) {
+  #scoutingFull{
+    display: grid;
+    grid-template-columns: minmax(auto, 400px) 768px minmax(auto, 400px);
+    grid-template-rows: 100%;
+    justify-content: space-around;
+  }
+}
+
