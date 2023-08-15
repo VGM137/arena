@@ -40,7 +40,7 @@ textarea {
 input::placeholder{
   color: rgb(134, 134, 134);
 }
-#scoutingSearch::placeholder{
+#galerySearch::placeholder{
   color: rgb(134, 134, 134);
 }
 /* #sidebarMenu{
@@ -53,11 +53,11 @@ input::placeholder{
 @media screen and (min-width: 769px) {
   .home-background__image{
     background-image: url(./images/bgCreateAccount.png);
-    background-color: #131313;
+    background-color: #292929;
   }
 }
 .user-background__image{
-  background-color: #131313;
+  background-color: #292929;
 }
 /* @media screen and (min-width: 640px) {
   .user-background__image{
@@ -153,7 +153,8 @@ ul.dashed > li:before {
 }
 
 @media screen and (min-width: 1024px) {
-  #scoutingFull{
+  #programsFull,
+  #galeryFull{
     display: grid;
     grid-template-columns: minmax(auto, 300px) 768px;
     grid-template-rows: 100%;
@@ -161,7 +162,8 @@ ul.dashed > li:before {
   }
 }
 @media screen and (min-width: 1280px) {
-  #scoutingFull{
+  #programsFull,
+  #galeryFull{
     display: grid;
     grid-template-columns: minmax(auto, 300px) 768px minmax(auto, 300px);
     grid-template-rows: 100%;
@@ -169,7 +171,8 @@ ul.dashed > li:before {
   }
 }
 @media screen and (min-width: 1280px) {
-  #scoutingFull{
+  #programsFull,
+  #galeryFull{
     display: grid;
     grid-template-columns: minmax(auto, 300px) 768px minmax(auto, 300px);
     grid-template-rows: 100%;
@@ -177,11 +180,18 @@ ul.dashed > li:before {
   }
 }
 @media screen and (min-width: 1536px) {
-  #scoutingFull{
+  #programsFull,
+  #galeryFull{
     display: grid;
     grid-template-columns: minmax(auto, 400px) 768px minmax(auto, 400px);
     grid-template-rows: 100%;
     justify-content: space-around;
   }
+}
+
+/* programs */
+.programs-carousel__img{
+  background: rgb(2,0,36);
+  background: linear-gradient(0deg, rgba(20,20,20,1) 0%, rgba(20,20,20,0.55) 20%, rgba(0,212,255,0) 100%);
 }
 
