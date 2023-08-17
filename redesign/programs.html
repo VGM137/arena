@@ -90,7 +90,7 @@
 <body>
   <main id="mainContainer" class="bg-popupGray">
 
-    <section id="mainHeader" class="z-50 user-background__image bg-cover h-auto sm:block">
+    <section id="mainHeader" class="relative z-50 user-background__image bg-cover h-auto sm:block">
 
       <section class="h-10 lg:h-10">
 
@@ -309,10 +309,10 @@
 
     </section>
       
-    <div class="h-screen bg-bgGray sm:h-90">
+    <div class="flex flex-col items-center min-h-screen h-auto bg-bgGray">
 
-      <div class="h-25 w-screen">
-        <a class="w-full h-full" href="#">
+      <div class="h-[25vh] w-screen sm:h-[40vh] md:h-[45vh] mb-3">
+        <a class="flex items-center w-full h-full" href="#">
           <div class="relative z-10 h-auto w-auto">
             <div class="programs-carousel__img absolute h-full w-full"></div>
             <img class="h-auto w-full" src="./images/swimmerProgram.jpg" alt="">
@@ -320,28 +320,34 @@
         </a>
       </div>
 
-      <div class="relative z-20 flex flex-col w-screen h-75 overflow-hidden">
-        <div class="flex items-center w-auto h-20 ml-5 mb-5 pb-2 overflow-x-scroll">
-          <div class="min-h-[20vw] h-auto min-w-[40vw] mr-3 rounded-md overflow-hidden bg-yellow">
-            <img src="" alt="">
+      <div class="relative z-20 flex flex-col w-screen h-auto overflow-hidden lg:w-90 items-center">
+        <div class="flex items-center w-full h-20 ml-5 mb-5 pb-2 overflow-x-auto">
+          <div class="flex items-center h-[20vw] sm:h-[10vw] min-w-[40vw] mr-3 overflow-hidden bg-yellow sm:min-w-[30vw] md:min-w-[20vw]">
+            <img class="h-auto max-h-[70%] w-auto max-w-[80%] m-auto" src="./images/cbs.png" alt="">
           </div>
-          <div class="min-h-[20vw] h-auto min-w-[40vw] mr-3 rounded-md overflow-hidden bg-yellow">
-            <img src="" alt="">
+          <div class="flex items-center h-[20vw] sm:h-[10vw] min-w-[40vw] mr-3 overflow-hidden bg-yellow sm:min-w-[30vw] md:min-w-[20vw]">
+            <img class="h-auto max-h-[70%] w-auto max-w-[80%] m-auto" src="./images/fox.png" alt="">
           </div>
-          <div class="min-h-[20vw] h-auto min-w-[40vw] mr-3 rounded-md overflow-hidden bg-yellow">
-            <img src="" alt="">
+          <div class="flex items-center h-[20vw] sm:h-[10vw] min-w-[40vw] mr-3 overflow-hidden bg-yellow sm:min-w-[30vw] md:min-w-[20vw]">
+            <img class="h-auto max-h-[70%] w-auto max-w-[80%] m-auto" src="./images/espn.png" alt="">
+          </div>
+          <div class="flex items-center h-[20vw] sm:h-[10vw] min-w-[40vw] mr-3 overflow-hidden bg-yellow sm:min-w-[30vw] md:min-w-[20vw]">
+            <img class="h-auto max-h-[70%] w-auto max-w-[80%] m-auto" src="./images/televisa.png" alt="">
+          </div>
+          <div class="flex items-center h-[20vw] sm:h-[10vw] min-w-[40vw] mr-3 overflow-hidden bg-yellow sm:min-w-[30vw] md:min-w-[20vw]">
+            <img class="h-auto max-h-[70%] w-auto max-w-[80%] m-auto" src="./images/nbc.png" alt="">
           </div>
         </div>
 
-        <div class="flex flex-col w-screen h-30 ml-5 mb-5 pb-2 text-avenir overflow-hidden">
+        <div class="flex flex-col w-full h-30 ml-5 mb-5 pb-2 text-avenir overflow-hidden">
           <h2 class="text-white text-xs font-druk my-3">CONTINUAR VIENDO</h2>
 
           <div class="flex items-center w-full overflow-x-auto pb-2">
-            <div class="flex flex-col h-full min-w-[40vw] mr-3 rounded-md overflow-hidden bg-popupGray">
-              <div class="h-auto w-full bg-yellow">
+            <div class="flex flex-col items-center h-auto min-w-[40vw] mr-3 overflow-hidden rounded-md sm:min-w-[30vw] md:min-w-[30vw] lg:min-w-[20vw]">
+              <div class="h-auto w-full bg-yellow overflow-hidden">
                 <img class="h-auto w-full" src="./images/racket-tenis.jpg" alt="">
               </div>
-              <div class="relative h-[40px]">
+              <div class="relative h-[40px] w-full bg-popupGray">
                 <div class="absolute top-0 progress-bar h-[2px] w-full bg-white">
                   <span class="flex bg-yellow h-full w-80"></span>
                 </div>
@@ -351,11 +357,12 @@
                 </div>
               </div>
             </div>
-            <div class="flex flex-col h-full min-w-[40vw] mr-3 rounded-md overflow-hidden bg-popupGray">
-              <div class="h-auto w-full bg-yellow">
+
+            <div class="flex flex-col items-center h-auto min-w-[40vw] mr-3 overflow-hidden rounded-md sm:min-w-[30vw] md:min-w-[30vw] lg:min-w-[20vw]">
+              <div class="h-auto w-full bg-yellow overflow-hidden">
                 <img class="h-auto w-full" src="./images/racket-tenis.jpg" alt="">
               </div>
-              <div class="relative h-[40px]">
+              <div class="relative h-[40px] w-full bg-popupGray">
                 <div class="absolute top-0 progress-bar h-[2px] w-full bg-white">
                   <span class="flex bg-yellow h-full w-40"></span>
                 </div>
@@ -365,11 +372,12 @@
                 </div>
               </div>
             </div>
-            <div class="flex flex-col h-full min-w-[40vw] mr-3 rounded-md overflow-hidden bg-popupGray">
-              <div class="h-auto w-full bg-yellow">
+
+            <div class="flex flex-col items-center h-auto min-w-[40vw] mr-3 overflow-hidden rounded-md sm:min-w-[30vw] md:min-w-[30vw] lg:min-w-[20vw]">
+              <div class="h-auto w-full bg-yellow overflow-hidden">
                 <img class="h-auto w-full" src="./images/racket-tenis.jpg" alt="">
               </div>
-              <div class="relative h-[40px]">
+              <div class="relative h-[40px] w-full bg-popupGray">
                 <div class="absolute top-0 progress-bar h-[2px] w-full bg-white">
                   <span class="flex bg-yellow h-full w-10"></span>
                 </div>
@@ -377,6 +385,66 @@
                   <span class="text-white">Tenis sin límite</span>
                   <span class="flex w-[20px] h-[20px] my-auto justify-center items-center bg-white text-align font-xl rounded-full">i</span>
                 </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col items-center h-auto min-w-[40vw] mr-3 overflow-hidden rounded-md sm:min-w-[30vw] md:min-w-[30vw] lg:min-w-[20vw]">
+              <div class="h-auto w-full bg-yellow overflow-hidden">
+                <img class="h-auto w-full" src="./images/racket-tenis.jpg" alt="">
+              </div>
+              <div class="relative h-[40px] w-full bg-popupGray">
+                <div class="absolute top-0 progress-bar h-[2px] w-full bg-white">
+                  <span class="flex bg-yellow h-full w-10"></span>
+                </div>
+                <div class="flex h-full p-2 justify-between">
+                  <span class="text-white">Tenis sin límite</span>
+                  <span class="flex w-[20px] h-[20px] my-auto justify-center items-center bg-white text-align font-xl rounded-full">i</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col items-center h-auto min-w-[40vw] mr-3 overflow-hidden rounded-md sm:min-w-[30vw] md:min-w-[30vw] lg:min-w-[20vw]">
+              <div class="h-auto w-full bg-yellow overflow-hidden">
+                <img class="h-auto w-full" src="./images/racket-tenis.jpg" alt="">
+              </div>
+              <div class="relative h-[40px] w-full bg-popupGray">
+                <div class="absolute top-0 progress-bar h-[2px] w-full bg-white">
+                  <span class="flex bg-yellow h-full w-10"></span>
+                </div>
+                <div class="flex h-full p-2 justify-between">
+                  <span class="text-white">Tenis sin límite</span>
+                  <span class="flex w-[20px] h-[20px] my-auto justify-center items-center bg-white text-align font-xl rounded-full">i</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex flex-col w-full h-30 ml-5 mb-5 pb-2 text-avenir overflow-hidden">
+          <h2 class="text-white text-xs font-druk my-3">SEGÚN TUS GUSTOS</h2>
+
+          <div class="flex items-center w-full overflow-x-auto pb-2">
+            <div class="flex flex-col items-center h-auto min-w-[40vw] mr-3 overflow-hidden rounded-md sm:min-w-[30vw] md:min-w-[30vw] lg:min-w-[20vw]">
+              <div class="h-auto w-full bg-yellow overflow-hidden">
+                <img class="h-auto w-full" src="./images/racket-tenis.jpg" alt="">
+              </div>
+            </div>
+
+            <div class="flex flex-col items-center h-auto min-w-[40vw] mr-3 overflow-hidden rounded-md sm:min-w-[30vw] md:min-w-[30vw] lg:min-w-[20vw]">
+              <div class="h-auto w-full bg-yellow overflow-hidden">
+                <img class="h-auto w-full" src="./images/racket-tenis.jpg" alt="">
+              </div>
+            </div>
+            
+            <div class="flex flex-col items-center h-auto min-w-[40vw] mr-3 overflow-hidden rounded-md sm:min-w-[30vw] md:min-w-[30vw] lg:min-w-[20vw]">
+              <div class="h-auto w-full bg-yellow overflow-hidden">
+                <img class="h-auto w-full" src="./images/racket-tenis.jpg" alt="">
+              </div>
+            </div>
+            
+            <div class="flex flex-col items-center h-auto min-w-[40vw] mr-3 overflow-hidden rounded-md sm:min-w-[30vw] md:min-w-[30vw] lg:min-w-[20vw]">
+              <div class="h-auto w-full bg-yellow overflow-hidden">
+                <img class="h-auto w-full" src="./images/racket-tenis.jpg" alt="">
               </div>
             </div>
           </div>

@@ -90,7 +90,7 @@
 <body>
   <main id="mainContainer" class="bg-popupGray">
 
-    <section id="mainHeader" class="z-50 user-background__image bg-cover h-auto sm:block">
+    <section id="mainHeader" class="hidden z-50 user-background__image bg-cover h-auto sm:block">
 
       <section class="h-10 lg:h-10">
 
@@ -430,7 +430,7 @@
         </div>
       </div>
 
-      <section id="galeryWrapper" class="relative z-10 h-full w-full m-auto bg-bgGray max-w-[768px]">
+      <section id="galeryWrapper" class="relative z-10 h-full w-auto m-auto bg-bgGray max-w-[768px]">
         <div id="feedNavigation" class="h-10 w-full hidden sm:flex sm:h-five sm:items-end">
           <div class="relative h-50 flex sm:hidden">
             <div id="galeryBack" class="absolute z-10 w-10 h-full">
@@ -445,6 +445,15 @@
               </div>
             </div>
           </div>
+
+          <div class="grid h-50 w-full grid-cols-4 sm:grid-cols-5 sm:h-full">
+            <div id="feed" class="hidden galery-nav__item flex justify-center items-center text-white cursor-pointer hover:bg-arenaGray hover:rounded-md sm:flex"><span class="h-auto w-auto text-avenir font-semibold">Feed</span></div>
+            <div id="forYou" class="galery-nav__item flex justify-center items-center text-white cursor-pointer hover:bg-arenaGray hover:rounded-md"><span class="h-auto w-auto text-avenir font-semibold">Para ti</span></div>
+            <div id="accounts" class="galery-nav__item flex justify-center items-center text-white cursor-pointer hover:bg-arenaGray hover:rounded-md"><span class="h-auto w-auto text-avenir font-semibold">Cuentas</span></div>
+            <div id="hashtags" class="galery-nav__item flex justify-center items-center text-white cursor-pointer hover:bg-arenaGray hover:rounded-md"><span class="h-auto w-auto text-avenir font-semibold">Hashtags</span></div>
+            <div id="sports" class="galery-nav__item flex justify-center items-center text-white cursor-pointer hover:bg-arenaGray hover:rounded-md"><span class="h-auto w-auto text-avenir font-semibold">Deportes</span></div>
+          </div>
+          
           <div class="grid h-50 w-full grid-cols-4 sm:grid-cols-5 sm:h-full">
             <div id="feed" class="hidden galery-nav__item flex justify-center items-center text-white cursor-pointer hover:bg-arenaGray hover:rounded-md sm:flex"><span class="h-auto w-auto text-avenir font-semibold">Feed</span></div>
             <div id="forYou" class="galery-nav__item flex justify-center items-center text-white cursor-pointer hover:bg-arenaGray hover:rounded-md"><span class="h-auto w-auto text-avenir font-semibold">Para ti</span></div>
@@ -454,7 +463,7 @@
           </div>
         </div>
   
-        <div id="feedMenu" class="absolute z-10 h-auto w-full bottom-0 font-white sm:hidden">
+        <div id="feedMenu" class="fixed z-10 h-auto w-full bottom-0 font-white sm:hidden">
           <div class="relative h-auto w-full max-w-[425px] m-auto">
             <img src="./images/bottom-bar.png" alt="Barra inferior">
             <div class="absolute bottom-50 translate-y-50 flex h-full w-full justify-between text-2xl text-white">
@@ -487,45 +496,89 @@
           </div>
         </div>
   
-        <div id="feedWrapper" class="relative galery-content__wrapper h-full w-full sm:h-95">
-          <div class="relative flex flex-col h-full w-full max-w-[425px] overflow-y-auto overflow-x-hidden items-center m-auto rounded-2xl sm:max-h-[755.55px]">
-            <div class="flex h-full w-max justify-center">
-              <video src="./videos/highway.mp4" class="h-full w-max" alt="Contenido del reel"></video>
-            </div>
-          </div>
-  
-          <div class="absolute top-0 w-full h-full max-w-[425px] left-50 translate-x-[-50%] sm:max-h-[755.55px]">
-            <div class="absolute top-2 left-50 translate-x-[-50%] flex mt text-avenir text-white text-xl" js-reel-type>
-              <button id="profesionalRadio" type="radio" class="active outline-0 bg-transparent mr-2 hover:text-letters focus:text-yellow" js-reel-pro>Profesional</button>
-              <span class="text-yellow">|</span>
-              <button id="amateurRadio" type="radio" class="outline-0 bg-transparent ml-2 hover:text-letters focus:text-yellow" js-reel-amateur>Amateur</button>
+        <div id="feedWrapper" class="relative galery-content__wrapper h-auto w-full sm:h-95 overflow-auto">
+          <div class='relative sm:mb-3'>
+            <div class="relative flex flex-col h-full w-full max-w-[425px] overflow-y-auto overflow-x-hidden items-center m-auto sm:rounded-2xl sm:max-h-[755.55px]">
+              <div class="flex h-full w-max justify-center">
+                <video src="./videos/highway.mp4" class="h-full w-max" alt="Contenido del reel"></video>
+              </div>
             </div>
     
-            <div class="absolute right-0 bottom-10 sm: w-10 h-80 flex flex-col justify-center items-center mr-3 font-avenir text-white font-2xl text-white sm:bottom-2 sm:left-full sm:ml-3" >
-              <div class="h-[45px] w-[45px] m-auto rounded-full overflow-hidden mb-3 cursor-pointer hover:scale-110 ease-in-out duration-300">
-                <img class="h-full w-auto m-auto" src="./images/perfil1.png" alt="profile pic">
+            <div class="absolute top-0 w-full h-full max-w-[425px] left-50 translate-x-[-50%] sm:max-h-[755.55px]">
+              <div class="absolute top-2 left-50 translate-x-[-50%] flex mt text-avenir text-white text-xl" js-reel-type>
+                <button id="profesionalRadio" type="radio" class="active outline-0 bg-transparent mr-2 hover:text-letters focus:text-yellow" js-reel-pro>Profesional</button>
+                <span class="text-yellow">|</span>
+                <button id="amateurRadio" type="radio" class="outline-0 bg-transparent ml-2 hover:text-letters focus:text-yellow" js-reel-amateur>Amateur</button>
               </div>
-              <div class="flex flex-col items-center mb-3 hover:text-yellow cursor-pointer">
-                <i class="fa-solid fa-thumbs-up fa-2xl mb"></i>
-                <span class="font-avenir text-xs font-bold">1k</span>
+      
+              <div class="absolute right-0 bottom-10 sm: w-10 h-80 flex flex-col justify-center items-center mr-3 font-avenir text-white font-2xl text-white sm:bottom-2 sm:left-full sm:ml-3" >
+                <div class="h-[45px] w-[45px] m-auto rounded-full overflow-hidden mb-3 cursor-pointer hover:scale-110 ease-in-out duration-300">
+                  <img class="h-full w-auto m-auto" src="./images/perfil1.png" alt="profile pic">
+                </div>
+                <div class="flex flex-col items-center mb-3 hover:text-yellow cursor-pointer">
+                  <i class="fa-solid fa-thumbs-up fa-2xl mb"></i>
+                  <span class="font-avenir text-xs font-bold">1k</span>
+                </div>
+                <div class="flex flex-col items-center mb-3 hover:text-yellow cursor-pointer">
+                  <i class="fa-solid fa-comment-lines fa-2xl mb"></i>
+                  <span class="font-avenir text-xs font-bold">300</span>
+                </div>
+                <i class="fa-solid fa-share fa-2xl mb-5 hover:text-yellow cursor-pointer"></i>
+                <i class="fa-solid fa-flag fa-2xl mb-5 hover:text-yellow cursor-pointer"></i>
+                <i class="fa-solid fa-bookmark fa-2xl mb-5 hover:text-yellow cursor-pointer"></i>
               </div>
-              <div class="flex flex-col items-center mb-3 hover:text-yellow cursor-pointer">
-                <i class="fa-solid fa-comment-lines fa-2xl mb"></i>
-                <span class="font-avenir text-xs font-bold">300</span>
+    
+              <div class="absolute bottom-10 left-0 ml-3 mb-3 font-avenir text-white sm:bottom-2" js-reel-description>
+                <h3 class="font-base mb-3">Armando Carrillo</h3>
+                <span class="font-sm mb-3">
+                  Práctica de fútbol <br>
+                  #fut #entrenamiento
+                </span>
               </div>
-              <i class="fa-solid fa-share fa-2xl mb-5 hover:text-yellow cursor-pointer"></i>
-              <i class="fa-solid fa-flag fa-2xl mb-5 hover:text-yellow cursor-pointer"></i>
-              <i class="fa-solid fa-bookmark fa-2xl mb-5 hover:text-yellow cursor-pointer"></i>
-            </div>
-  
-            <div class="absolute bottom-10 left-0 ml-3 mb-3 font-avenir text-white sm:bottom-2" js-reel-description>
-              <h3 class="font-base mb-3">Armando Carrillo</h3>
-              <span class="font-sm mb-3">
-                Práctica de fútbol <br>
-                #fut #entrenamiento
-              </span>
             </div>
           </div>
+          
+          <div class='relative  sm:mb-3'>
+            <div class="relative flex flex-col h-full w-full max-w-[425px] overflow-y-auto overflow-x-hidden items-center m-auto sm:rounded-2xl sm:max-h-[755.55px]">
+              <div class="flex h-full w-max justify-center">
+                <video src="./videos/highway.mp4" class="h-full w-max" alt="Contenido del reel"></video>
+              </div>
+            </div>
+    
+            <div class="absolute top-0 w-full h-full max-w-[425px] left-50 translate-x-[-50%] sm:max-h-[755.55px]">
+              <div class="absolute top-2 left-50 translate-x-[-50%] flex mt text-avenir text-white text-xl" js-reel-type>
+                <button id="profesionalRadio" type="radio" class="active outline-0 bg-transparent mr-2 hover:text-letters focus:text-yellow" js-reel-pro>Profesional</button>
+                <span class="text-yellow">|</span>
+                <button id="amateurRadio" type="radio" class="outline-0 bg-transparent ml-2 hover:text-letters focus:text-yellow" js-reel-amateur>Amateur</button>
+              </div>
+      
+              <div class="absolute right-0 bottom-10 sm: w-10 h-80 flex flex-col justify-center items-center mr-3 font-avenir text-white font-2xl text-white sm:bottom-2 sm:left-full sm:ml-3" >
+                <div class="h-[45px] w-[45px] m-auto rounded-full overflow-hidden mb-3 cursor-pointer hover:scale-110 ease-in-out duration-300">
+                  <img class="h-full w-auto m-auto" src="./images/perfil1.png" alt="profile pic">
+                </div>
+                <div class="flex flex-col items-center mb-3 hover:text-yellow cursor-pointer">
+                  <i class="fa-solid fa-thumbs-up fa-2xl mb"></i>
+                  <span class="font-avenir text-xs font-bold">1k</span>
+                </div>
+                <div class="flex flex-col items-center mb-3 hover:text-yellow cursor-pointer">
+                  <i class="fa-solid fa-comment-lines fa-2xl mb"></i>
+                  <span class="font-avenir text-xs font-bold">300</span>
+                </div>
+                <i class="fa-solid fa-share fa-2xl mb-5 hover:text-yellow cursor-pointer"></i>
+                <i class="fa-solid fa-flag fa-2xl mb-5 hover:text-yellow cursor-pointer"></i>
+                <i class="fa-solid fa-bookmark fa-2xl mb-5 hover:text-yellow cursor-pointer"></i>
+              </div>
+    
+              <div class="absolute bottom-10 left-0 ml-3 mb-3 font-avenir text-white sm:bottom-2" js-reel-description>
+                <h3 class="font-base mb-3">Armando Carrillo</h3>
+                <span class="font-sm mb-3">
+                  Práctica de fútbol <br>
+                  #fut #entrenamiento
+                </span>
+              </div>
+            </div>
+          </div>
+
         </div>
   
         <div id="forYouWrapper" class="hidden galery-content__wrapper h-90 overflow-y-scroll sm:h-95">
